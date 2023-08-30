@@ -2,3 +2,5 @@
 ^renv\.lock$
 ^LICENSE\.md$
 ^codemeta\.json$
+^README\.Rmd$
+^\.github$

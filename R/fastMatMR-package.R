@@ -1,5 +1,5 @@
 ## usethis namespace: start
 #' @useDynLib fastMatMR, .registration = TRUE
 ## usethis namespace: end
-#' @export test_fmm
+#' @export vec_to_fmm
 NULL

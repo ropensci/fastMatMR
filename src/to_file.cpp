@@ -3,46 +3,33 @@
 #include<vector>
 #include<iostream>
 #include<cstring>
+#include<filesystem>
+#include<fstream>
 
 #include "cpp11.hpp"
 #include "base_types.h"
 
-#include "fast_matrix_market/fast_matrix_market.hpp"
+#include "../inst/include/fast_matrix_market/fast_matrix_market.hpp"
 
 namespace fmm = fast_matrix_market;
+using namespace std::string_literals;
 
 [[cpp11::register]]
-int test_fmm() {
-    // Create a matrix
-    triplet_matrix<int64_t, double> triplet;
-
-    triplet.nrows = 4;
-    triplet.ncols = 4;
-
-    triplet.rows = {1, 2, 3, 3};
-    triplet.cols = {0, 1, 2, 3};
-    triplet.vals = {1.0, 5, 2E5, 19};
-
+int vec_to_fmm(cpp11::doubles r_vec, std::string filename) {
     std::string mm;
+    std::vector<double> std_vec(r_vec.size());
+    std::copy(r_vec.begin(), r_vec.end(), std_vec.begin());
+    fmm::matrix_market_header header(1, std_vec.size());
+    // header.comment = std::string("comment");
+    // Use C++17 filesystem to construct ofstream
+    std::filesystem::path file_path(filename);
+    std::ofstream os(file_path);
 
-    // Write triplet to Matrix Market. Use std::ostringstream to write to a string.
-    {
-        std::ostringstream oss;
-
-        // The `nrows` and `ncols` below are a brace initialization of the header.
-        // If you are interested in the other aspects of the Matrix Market header then
-        // construct an instance of fast_matrix_market::matrix_market_header.
-        // This is how you would manipulate the comment field: header.comment = std::string("comment");
-        // You may also set header.field = fast_matrix_market::pattern to write a pattern file (only indices, no values).
-        // Non-pattern field types (integer, real, complex) are deduced from the template type and cannot be overriden.
-
-        fmm::write_matrix_market_triplet(
-                oss,
-                {triplet.nrows, triplet.ncols},
-                triplet.rows, triplet.cols, triplet.vals);
-
-        mm = oss.str();
-        std::cout << mm << std::endl << std::endl;
+    if (!os.is_open()) {
+        // Handle error
+        return EXIT_FAILURE;
     }
+    fmm::write_matrix_market_array(os, header, std_vec);
+    os.close();
     return EXIT_SUCCESS;
 }

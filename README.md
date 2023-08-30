@@ -1,12 +1,12 @@
 
-# fastMatMR
+# `fastMatMR`
 
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/HaoZeke/fastMatMR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/HaoZeke/fastMatMR/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-## About fastMatMR
+## About
 
 `fastMatMR` provides R bindings for reading and writing to [Matrix
 Market files](https://math.nist.gov/MatrixMarket/formats.html) using the
@@ -14,7 +14,7 @@ high-performance [fast_matrix_market C++
 library](https://github.com/alugowski/fast_matrix_market) (version
 1.7.2).
 
-## Why Use fastMatMR?
+## Why?
 
 - **Extended Support**: Unlike the `Matrix` package, which only handles
   sparse matrices, `fastMatMR` supports standard R vectors, matrices, as

@@ -1,0 +1,6 @@
+CXX_STD = CXX17
+
+# On macOS, with conda, we need disable_availability
+# https://conda-forge.org/docs/maintainer/knowledge_base.html#newer-c-features-with-old-sdk
+PKG_CPPFLAGS += -D_LIBCPP_DISABLE_AVAILABILITY
+PKG_CPPFLAGS += -I"../inst/include/"

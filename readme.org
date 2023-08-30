@@ -1,0 +1,18 @@
+* fastMatMR
+** About
+~R~ bindings [[https://cran.r-project.org/web/packages/cpp11/index.html][using cpp11]] for reading and writing to [[https://math.nist.gov/MatrixMarket/formats.html][Matrix Market files]] using
+the excellent [[https://github.com/alugowski/fast_matrix_market][fast_matrix_market]] ~C++~ library.
+** Usage
+** Development
+*** Local development
+A ~pre-commit~ job is setup on CI to enforce consistent styles, so it is best to
+set it up locally as well (using [[https://pypa.github.io/pipx][pipx]] for isolation):
+
+#+begin_src sh
+# Run before commiting
+pipx run pre-commit run --all-files
+# Or install the git hook to enforce this
+pipx run pre-commit install
+#+end_src
+** License
+MIT.

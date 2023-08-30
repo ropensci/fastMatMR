@@ -1,7 +1,7 @@
 Package: fastMatMR
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
-Authors@R: 
+Authors@R:
     person("Rohit", "Goswami", , "rgoswami@ieee.org", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-2393-8056"))
 Description: What the package does (one paragraph).

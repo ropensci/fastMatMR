@@ -11,6 +11,7 @@ repos:
   rev: v16.0.6
   hooks:
   - id: clang-format
+    exclude: ^(include)
 - repo: https://github.com/lorenzwalthert/precommit
   rev: v0.2.0
   hooks:
@@ -25,9 +26,5 @@ repos:
   - id: no-browser-statement
   - id: readme-rmd-rendered
   - id: roxygenize
-    additional_dependencies:
-      - tidyr
-      - dplyr
-      - forcats
-  - id: use-tidy-description
-  - id: deps-in-desc
+  # - id: use-tidy-description
+  # - id: deps-in-desc

@@ -19,3 +19,5 @@ Imports:
     cpp11
 Suggests:
     Matrix
+URL: https://github.com/HaoZeke/fastMatMR
+BugReports: https://github.com/HaoZeke/fastMatMR/issues

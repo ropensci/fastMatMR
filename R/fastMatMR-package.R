@@ -3,6 +3,7 @@
 ## usethis namespace: end
 #' @export vec_to_fmm
 #' @export mat_to_fmm
+#' @export sparse_to_fmm
 NULL
 
 #' Convert Various Numeric Types to Matrix Market Format
@@ -20,9 +21,14 @@ NULL
 #' \dontrun{
 #' vec <- c(1, 2, 3)
 #' mat <- matrix(c(1, 2, 3, 4), nrow = 2)
+#' sparse_mat <- Matrix::Matrix(c(1, 0, 0, 2), nrow = 2, sparse = TRUE)
+#' Diagonal ^-
+#' sparse_mat <- Matrix::Matrix(c(1, 1, 0, 2), nrow = 2, sparse = TRUE)
+#' And not diagonal -^
 #'
 #' writeFMM(vec, "vector.mtx")
 #' writeFMM(mat, "matrix.mtx")
+#' writeFMM(sparse_mat, "sparse_matrix.mtx")
 #' }
 #'
 #' @export
@@ -31,7 +37,11 @@ writeFMM <- function(input, fname = "out.mtx") {
     return(vec_to_fmm(input, fname))
   } else if (is.matrix(input)) {
     return(mat_to_fmm(input, fname))
-  } else {
-    stop("Unsupported input type. Accepted types are numeric vector, matrix.")
+  }
+  else if (inherits(input, "sparseMatrix")) {
+    return(sparse_to_fmm(input, fname))
+  }
+  else {
+    stop("Unsupported input type. Accepted types are numeric vector, matrix, and sparseMatrix.")
   }
 }

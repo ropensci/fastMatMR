@@ -1,0 +1,65 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "SoftwareSourceCode",
+  "identifier": "fastMatMR",
+  "description": "\"\"\" fastMatMR is a set of bindings to the fast_matrix_market cpp library which is used to read and write matrix market compatible files. \"\"\"",
+  "name": "fastMatMR: \"Reads and writes matrix market files\"",
+  "license": "https://spdx.org/licenses/MIT",
+  "version": "0.0.0.9000",
+  "programmingLanguage": {
+    "@type": "ComputerLanguage",
+    "name": "R",
+    "url": "https://r-project.org"
+  },
+  "runtimePlatform": "R version 4.3.1 (2023-06-16)",
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Rohit",
+      "familyName": "Goswami",
+      "email": "rgoswami@ieee.org",
+      "@id": "https://orcid.org/0000-0002-2393-8056"
+    }
+  ],
+  "maintainer": [
+    {
+      "@type": "Person",
+      "givenName": "Rohit",
+      "familyName": "Goswami",
+      "email": "rgoswami@ieee.org",
+      "@id": "https://orcid.org/0000-0002-2393-8056"
+    }
+  ],
+  "softwareSuggestions": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "Matrix",
+      "name": "Matrix",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=Matrix"
+    }
+  ],
+  "softwareRequirements": {
+    "1": {
+      "@type": "SoftwareApplication",
+      "identifier": "cpp11",
+      "name": "cpp11",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=cpp11"
+    },
+    "SystemRequirements": "C++17"
+  },
+  "fileSize": "236.397KB",
+  "codeRepository": "https://github.com/HaoZeke/fastMatMR",
+  "readme": "https://github.com/HaoZeke/fastMatMR/blob/main/readme.org"
+}

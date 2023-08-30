@@ -1,7 +1,7 @@
 * fastMatMR
 ** About
 ~R~ bindings [[https://cran.r-project.org/web/packages/cpp11/index.html][using cpp11]] for reading and writing to [[https://math.nist.gov/MatrixMarket/formats.html][Matrix Market files]] using
-the excellent [[https://github.com/alugowski/fast_matrix_market][fast_matrix_market]] ~C++~ library.
+the excellent [[https://github.com/alugowski/fast_matrix_market][fast_matrix_market]] ~C++~ library (version *1.7.2*).
 ** Usage
 ** Development
 *** Local development
@@ -13,6 +13,11 @@ set it up locally as well (using [[https://pypa.github.io/pipx][pipx]] for isola
 pipx run pre-commit run --all-files
 # Or install the git hook to enforce this
 pipx run pre-commit install
+#+end_src
+However, sometimes ~pre-commit~ for ~R~ can be flakey. In such situations consider:
+#+begin_src bash
+find . \( -path "./.pixi" -o -path "./renv" \) -prune -o -type f -name "*.R" -exec Rscript -e 'library(styler); style_file("{}")' \;
+Rscript -e 'library(lintr); lintr::lint_package(".")'
 #+end_src
 ** License
 MIT.

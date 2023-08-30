@@ -9,6 +9,16 @@
     ]
   },
   "Packages": {
+    "cpp11": {
+      "Package": "cpp11",
+      "Version": "0.4.6",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "707fae4bbf73697ec8d85f9d7076c061"
+    },
     "renv": {
       "Package": "renv",
       "Version": "1.0.2",

@@ -3,8 +3,12 @@
     "Version": "4.3.1",
     "Repositories": [
       {
+        "Name": "ropenscireviewtools",
+        "URL": "https://ropensci-review-tools.r-universe.dev"
+      },
+      {
         "Name": "CRAN",
-        "URL": "https://packagemanager.posit.co/cran/latest"
+        "URL": "https://cloud.r-project.org"
       }
     ]
   },

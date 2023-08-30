@@ -7,7 +7,6 @@
 #include<fstream>
 
 #include "cpp11.hpp"
-#include "base_types.h"
 
 #include "../inst/include/fast_matrix_market/fast_matrix_market.hpp"
 

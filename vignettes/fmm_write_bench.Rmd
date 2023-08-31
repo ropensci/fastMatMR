@@ -95,7 +95,10 @@ suppressWarnings(print(
 #> `geom_smooth()` using formula = 'y ~ x'
 ```
 
-![plot of chunk fixed-sparse](fixed-sparse-1.png)
+<div class="figure">
+<img src="fixed-sparse-1.png" alt="plot of chunk fixed-sparse" width="800" />
+<p class="caption">plot of chunk fixed-sparse</p>
+</div>
 
 ## Benchmarking with Varying Sparsity
 
@@ -155,7 +158,10 @@ ggplot(results_varying_sparsity, aes(x = sparsity, y = time, color = expr)) +
 #> `geom_smooth()` using formula = 'y ~ x'
 ```
 
-![plot of chunk varying-sparse](varying-sparse-1.png)
+<div class="figure">
+<img src="varying-sparse-1.png" alt="plot of chunk varying-sparse" width="800" />
+<p class="caption">plot of chunk varying-sparse</p>
+</div>
 
 ## Conclusions
 

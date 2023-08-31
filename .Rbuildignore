@@ -17,3 +17,5 @@
 ^rebuild-benchmarks\.R$
 ^towncrier\.toml$
 ^tbump\.toml$
+^CITATION\.cff$
+^CODEOWNERS$

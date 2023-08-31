@@ -5,4 +5,4 @@
 ^README\.Rmd$
 ^\.github$
 ^\.pre-commit-config.yaml$
-^\\.pixi$
+^\.pixi$

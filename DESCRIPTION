@@ -4,18 +4,13 @@ Version: 0.0.0.9000
 Authors@R:
     person("Rohit", "Goswami", , "rgoswami@ieee.org", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-2393-8056"))
-Description: """
-             fastMatMR is a set of bindings to the fast_matrix_market cpp library which is
-             used to read and write matrix market compatible files.
-             """
+Description: "fastMatMR is a set of bindings to the fast_matrix_market cpp library which is used to read and write matrix market compatible files."
 License: MIT + file LICENSE
 SystemRequirements: C++17
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 LinkingTo:
-    cpp11
-Imports:
     cpp11
 Suggests:
     Matrix

@@ -1,5 +1,5 @@
 
-# `fastMatMR`
+# `fastMatMR` <img src="man/figures/logo.png" align="right" height="139" alt="" />
 
 <!-- badges: start -->
 
@@ -90,6 +90,30 @@ Tests and checks are run on the CI, however locally one can use:
 Rscript -e 'devtools::test()'
 ```
 
+#### Documentation
+
+Ideally each change should be documented. Major changes should be
+`vignettes`, and minor ones can be added to `newsfragments`.
+
+Benchmark vignettes are pre-computed via:
+
+``` bash
+Rscript rebuild-benchmarks.R
+```
+
+Which makes it faster to build the package and run checks.
+
 ## License
 
 This project is licensed under the MIT License.
+
+### Logo
+
+The logo was generated via a non-commercial use prompt on hotpot.ai,
+both [blue](https://hotpot.ai/s/art-generator/8-TNiwRilbBFnQHwK), and
+[green](https://hotpot.ai/s/art-generator/8-E2dBngG5nRiwCeL), as a riff
+on the [NIST Matrix Market logo](https://math.nist.gov/MatrixMarket/).
+The text was added in a presentation software (WPS Presentation).
+Hexagonal cropping was accomplished in a [hexb](http://hexb.in/)
+compatible design [using
+hexsticker](https://github.com/fridex/hexsticker).

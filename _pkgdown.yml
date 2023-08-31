@@ -1,0 +1,8 @@
+url: ~
+template:
+  bootstrap: 5
+  bootswatch: lumen
+
+authors:
+  Rohit Goswami:
+    href: https://rgoswami.me

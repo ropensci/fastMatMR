@@ -32,7 +32,8 @@ test_that("Sparse matrix roundtrip equivalence", {
 
 test_that("Sparse matrix diagonal equivalence", {
   original_spmat <- sparse_mat <- Matrix::Matrix(c(1, 0, 0, 2),
-                                                 nrow = 2, sparse = TRUE)
+    nrow = 2, sparse = TRUE
+  )
   write_fmm(original_spmat, "sparse.mtx")
   read_spmat <- Matrix::readMM("sparse.mtx")
   expect_true(all(original_spmat == read_spmat))

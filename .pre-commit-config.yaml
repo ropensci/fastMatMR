@@ -3,7 +3,7 @@ repos:
   rev: v4.4.0
   hooks:
   - id: trailing-whitespace
-    exclude: ^(.lintr/)|^(renv/)
+    exclude: ^(.lintr/)|^(renv/)|^(vignettes/)
   - id: end-of-file-fixer
     exclude: ^(renv/)
   - id: check-yaml

@@ -6,6 +6,7 @@
 [![R-CMD-check](https://github.com/HaoZeke/fastMatMR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/HaoZeke/fastMatMR/actions/workflows/R-CMD-check.yaml)
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+[![DOI](https://zenodo.org/badge/685246044.svg)](https://zenodo.org/badge/latestdoi/685246044)
 <!-- badges: end -->
 
 ## About

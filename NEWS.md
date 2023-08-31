@@ -2,6 +2,11 @@ This is the changelog for the `fastMatMR` package.
 
 <!-- towncrier release notes start -->
 
+0.0.1.0 (2023-08-31)
+
+No significant changes.
+
+
 0.0.0.9000 (2023-08-31)
 
 ### Improved Documentation

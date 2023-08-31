@@ -3,5 +3,5 @@
 export(mat_to_fmm)
 export(sparse_to_fmm)
 export(vec_to_fmm)
-export(writeFMM)
+export(write_fmm)
 useDynLib(fastMatMR, .registration = TRUE)

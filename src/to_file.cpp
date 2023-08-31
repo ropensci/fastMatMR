@@ -1,5 +1,4 @@
 #include <cstdint>
-#include <cstdlib>
 #include <cstring>
 #include <filesystem>
 #include <fstream>
@@ -13,7 +12,7 @@
 namespace fmm = fast_matrix_market;
 
 [[cpp11::register]] //
-int vec_to_fmm(cpp11::doubles r_vec, std::string filename) {
+bool vec_to_fmm(cpp11::doubles r_vec, std::string filename) {
   std::string mm;
   std::vector<double> std_vec(r_vec.size());
   std::copy(r_vec.begin(), r_vec.end(), std_vec.begin());
@@ -25,15 +24,15 @@ int vec_to_fmm(cpp11::doubles r_vec, std::string filename) {
 
   if (!os.is_open()) {
     // Handle error
-    return EXIT_FAILURE;
+    return false;
   }
   fmm::write_matrix_market_array(os, header, std_vec);
   os.close();
-  return EXIT_SUCCESS;
+  return true;
 }
 
 [[cpp11::register]] //
-int mat_to_fmm(cpp11::doubles_matrix<> r_mat,
+bool mat_to_fmm(cpp11::doubles_matrix<> r_mat,
                std::string filename) {
   // Get matrix dimensions
   int nrows = r_mat.nrow();
@@ -52,16 +51,16 @@ int mat_to_fmm(cpp11::doubles_matrix<> r_mat,
   std::filesystem::path file_path(filename);
   std::ofstream os(file_path);
   if (!os.is_open()) {
-    return EXIT_FAILURE;
+    return false;
   }
 
   fmm::write_matrix_market_array(os, header, std_vec);
   os.close();
-  return EXIT_SUCCESS;
+  return true;
 }
 
 [[cpp11::register]] //
-int sparse_to_fmm(cpp11::sexp input, std::string filename) {
+bool sparse_to_fmm(cpp11::sexp input, std::string filename) {
   std::vector<int> i_vec, p_vec; // not set for diagonal sparse matrices
   std::vector<double> x_vec =
       cpp11::as_cpp<std::vector<double>>(input.attr("x"));
@@ -89,12 +88,12 @@ int sparse_to_fmm(cpp11::sexp input, std::string filename) {
 
   std::ofstream os(filename);
   if (!os.is_open()) {
-    return EXIT_FAILURE;
+    return false;
   }
 
   fmm::write_matrix_market_csc(os, header, p_vec, i_vec, x_vec, false);
 
   os.close();
 
-  return EXIT_SUCCESS;
+  return true;
 }

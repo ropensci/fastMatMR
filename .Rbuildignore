@@ -15,3 +15,5 @@
 ^docs$
 ^pkgdown$
 ^rebuild-benchmarks\.R$
+^towncrier\.toml$
+^tbump\.toml$

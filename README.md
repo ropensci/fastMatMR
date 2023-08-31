@@ -82,6 +82,14 @@ find . \( -path "./.pixi" -o -path "./renv" \) -prune -o -type f -name "*.R" -ex
 Rscript -e 'library(lintr); lintr::lint_package(".")'
 ```
 
+#### Tests
+
+Tests and checks are run on the CI, however locally one can use:
+
+``` bash
+Rscript -e 'devtools::test()'
+```
+
 ## License
 
 This project is licensed under the MIT License.

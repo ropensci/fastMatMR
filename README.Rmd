@@ -21,7 +21,7 @@ library](https://github.com/alugowski/fast_matrix_market) (version 1.7.2).
 - **Extended Support**: Unlike the `Matrix` package, which only handles sparse
   matrices, `fastMatMR` supports standard R vectors, matrices, as well as
   `Matrix` sparse objects.
-  
+
 - **Performance**: The package is a thin wrapper around one of the fastest C++
   libraries for reading and writing `.mtx` files.
 
@@ -79,6 +79,14 @@ If you find that `pre-commit` for R is flaky, you can consider the following com
 ```bash
 find . \( -path "./.pixi" -o -path "./renv" \) -prune -o -type f -name "*.R" -exec Rscript -e 'library(styler); style_file("{}")' \;
 Rscript -e 'library(lintr); lintr::lint_package(".")'
+```
+
+#### Tests
+
+Tests and checks are run on the CI, however locally one can use:
+
+```bash
+Rscript -e 'devtools::test()'
 ```
 
 ## License

@@ -6,3 +6,8 @@
 ^\.github$
 ^\.pre-commit-config.yaml$
 ^\.pixi$
+^CODE_OF_CONDUCT\.md$
+^CONTRIBUTING\.md$
+^newsfragments$
+^pixi\.*$
+^\.covrignore$

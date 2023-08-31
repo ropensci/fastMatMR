@@ -11,3 +11,9 @@
 ^newsfragments$
 ^pixi\.*$
 ^\.covrignore$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^rebuild-benchmarks\.R$
+^towncrier\.toml$
+^tbump\.toml$

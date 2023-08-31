@@ -118,3 +118,4 @@ rsconnect/
 *.out
 *.app
 inst/doc
+docs

@@ -1,0 +1,91 @@
+---
+title: "Getting Started with fastMatMR"
+author: "Rohit Goswami"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting Started with fastMatMR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Introduction
+
+`fastMatMR` is an R package that provides high-performance reading and writing
+of Matrix Market files. It wraps around the [fast_matrix_market C++
+library](https://github.com/alugowski/fast_matrix_market), ensuring optimal
+performance.
+
+## Unique Features
+
+Unlike other packages, such as `Matrix`, `fastMatMR` offers extended support
+for:
+
+- **Dense Vectors**: Writing standard R vectors to `.mtx` files.
+- **Dense Matrices**: Writing standard R matrices to `.mtx` files.
+- **Sparse Matrices**: A more efficient way of reading and writing sparse
+  matrices. For performance benchmarks, see [our performance
+  vignette](vignette("fmm_write_bench")).
+
+# Installation
+
+To install the development version of `fastMatMR` from GitHub:
+
+```{r, eval=FALSE}
+# install.packages("devtools")
+devtools::install_github("HaoZeke/fastMatMR")
+```
+
+# Basic Usage
+
+Load the `fastMatMR` package:
+
+```{r}
+library(fastMatMR)
+```
+
+## Writing Matrix Market files
+
+### With Dense Vectors (Not Supported by `Matrix`)
+
+```{r}
+vec <- c(1, 2, 3)
+write_fmm(vec, "vector.mtx")
+```
+
+### With Dense Matrices (Not Supported by `Matrix`)
+
+```{r}
+mat <- matrix(c(1, 2, 3, 4), nrow = 2)
+write_fmm(mat, "matrix.mtx")
+```
+
+### With Sparse Matrices
+
+```{r}
+sp_mat <- Matrix::sparseMatrix(i = c(1, 3), j = c(2, 4), x = 7:8)
+write_fmm(sp_mat, "sparse.mtx")
+```
+
+## Reading Back In Python
+
+You can read the `.mtx` files back in Python:
+
+```bash
+pip install fast_matrix_market
+python -c 'import fast_matrix_market as fmm; print(fmm.read_array_or_coo("sparse.mtx"))'
+```
+
+# Summary
+
+`fastMatMR` offers unique capabilities in the R ecosystem for working with
+Matrix Market files, including support for dense vectors and matrices. It also
+provides high-performance sparse matrix operations, as benchmarked in our
+[performance vignette](vignette("fmm_write_bench")).

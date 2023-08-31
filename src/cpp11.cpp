@@ -6,21 +6,21 @@
 #include <R_ext/Visibility.h>
 
 // to_file.cpp
-int vec_to_fmm(cpp11::doubles r_vec, std::string filename);
+bool vec_to_fmm(cpp11::doubles r_vec, std::string filename);
 extern "C" SEXP _fastMatMR_vec_to_fmm(SEXP r_vec, SEXP filename) {
   BEGIN_CPP11
     return cpp11::as_sexp(vec_to_fmm(cpp11::as_cpp<cpp11::decay_t<cpp11::doubles>>(r_vec), cpp11::as_cpp<cpp11::decay_t<std::string>>(filename)));
   END_CPP11
 }
 // to_file.cpp
-int mat_to_fmm(cpp11::doubles_matrix<> r_mat, std::string filename);
+bool mat_to_fmm(cpp11::doubles_matrix<> r_mat, std::string filename);
 extern "C" SEXP _fastMatMR_mat_to_fmm(SEXP r_mat, SEXP filename) {
   BEGIN_CPP11
     return cpp11::as_sexp(mat_to_fmm(cpp11::as_cpp<cpp11::decay_t<cpp11::doubles_matrix<>>>(r_mat), cpp11::as_cpp<cpp11::decay_t<std::string>>(filename)));
   END_CPP11
 }
 // to_file.cpp
-int sparse_to_fmm(cpp11::sexp input, std::string filename);
+bool sparse_to_fmm(cpp11::sexp input, std::string filename);
 extern "C" SEXP _fastMatMR_sparse_to_fmm(SEXP input, SEXP filename) {
   BEGIN_CPP11
     return cpp11::as_sexp(sparse_to_fmm(cpp11::as_cpp<cpp11::decay_t<cpp11::sexp>>(input), cpp11::as_cpp<cpp11::decay_t<std::string>>(filename)));

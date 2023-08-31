@@ -39,7 +39,7 @@ devtools::install_github("HaoZeke/fastMatMR")
 
 ```{r eval=FALSE}
 library(fastMatMR)
-Matrix::Matrix(c(1, 0, 3, 2), nrow = 2, sparse = TRUE) ->spmat
+Matrix::Matrix(c(1, 0, 3, 2), nrow = 2, sparse = TRUE) -> spmat
 write_fmm(vec, "vector.mtx")
 ```
 

@@ -13,8 +13,10 @@ RoxygenNote: 7.2.3
 LinkingTo:
     cpp11
 Suggests:
+    ggplot2,
     knitr,
     Matrix,
+    microbenchmark,
     rmarkdown,
     testthat (>= 3.0.0)
 URL: https://github.com/HaoZeke/fastMatMR

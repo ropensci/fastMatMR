@@ -1,5 +1,7 @@
 ---
 title: "Getting Started with fastMatMR"
+author: "Rohit Goswami"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Getting Started with fastMatMR}
@@ -30,7 +32,7 @@ for:
 - **Dense Matrices**: Writing standard R matrices to `.mtx` files.
 - **Sparse Matrices**: A more efficient way of reading and writing sparse
   matrices. For performance benchmarks, see [our performance
-  vignette](vignette("write_benchmarks")).
+  vignette](vignette("fmm_write_bench")).
 
 # Installation
 
@@ -86,4 +88,4 @@ python -c 'import fast_matrix_market as fmm; print(fmm.read_array_or_coo("sparse
 `fastMatMR` offers unique capabilities in the R ecosystem for working with
 Matrix Market files, including support for dense vectors and matrices. It also
 provides high-performance sparse matrix operations, as benchmarked in our
-[performance vignette](vignette("write_benchmarks")).
+[performance vignette](vignette("fmm_write_bench")).

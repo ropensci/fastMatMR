@@ -11,3 +11,6 @@
 ^newsfragments$
 ^pixi\.*$
 ^\.covrignore$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$

@@ -3,6 +3,7 @@
 ## These converts NA to NaN
 #' @export fmm_to_vec
 #' @export fmm_to_mat
+#' @export fmm_to_sparse_Matrix
 ## usethis namespace: end
 
 # Documentation for vec_to_fmm

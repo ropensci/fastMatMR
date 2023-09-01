@@ -86,10 +86,9 @@ suppressWarnings(print(
   ggplot(results_fixed_sparsity, aes(x = size, y = time, color = expr)) +
     geom_point() +
     geom_smooth(method = 'loess') +
-    ## scale_x_log10() +
     scale_y_log10() +
     ggtitle("Benchmarking with Fixed Sparsity") +
-    xlab("Matrix Size (log10)") +
+    xlab("Matrix Size") +
     ylab("Time (ns, log10)")
 ))
 #> `geom_smooth()` using formula = 'y ~ x'

@@ -1,5 +1,6 @@
 ## usethis namespace: start
 #' @useDynLib fastMatMR, .registration = TRUE
+#' @export fmm_to_vec ## This converts NA to NaN
 ## usethis namespace: end
 
 # Documentation for vec_to_fmm

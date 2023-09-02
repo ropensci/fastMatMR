@@ -1,12 +1,46 @@
 ## usethis namespace: start
 #' @useDynLib fastMatMR, .registration = TRUE
-## These converts NA to NaN
-#' @export fmm_to_vec
-#' @export fmm_to_mat
-#' @export fmm_to_sparse_Matrix
 ## usethis namespace: end
 
-# Documentation for vec_to_fmm
+#' @export fmm_to_vec
+#' @rdname fmm_to_vec
+#' @name fmm_to_vec
+#' @title Convert Matrix Market File to Numeric Vector
+#' @description This function reads a Matrix Market file and converts it to a numeric vector in R.
+#' @param filename The name of the input Matrix Market file to be read.
+#' @return A numeric vector containing the data read from the Matrix Market file.
+#' @examples
+#' \dontrun{
+#' vec <- fmm_to_vec("matrix.mtx")
+#' }
+NULL
+
+#' @export fmm_to_mat
+#' @rdname fmm_to_mat
+#' @name fmm_to_mat
+#' @title Convert Matrix Market File to Matrix
+#' @description This function reads a Matrix Market file and converts it to a matrix in R.
+#' @param filename The name of the input Matrix Market file to be read.
+#' @return A matrix containing the data read from the Matrix Market file.
+#' @examples
+#' \dontrun{
+#' mat <- fmm_to_mat("matrix.mtx")
+#' }
+NULL
+
+#' @export fmm_to_sparse_Matrix
+#' @rdname fmm_to_sparse_Matrix
+#' @name fmm_to_sparse_Matrix
+#' @title Convert Matrix Market File to Sparse Matrix
+#' @description This function reads a Matrix Market file and converts it to a sparse matrix in R using the Matrix package.
+#' @param filename The name of the input Matrix Market file to be read.
+#' @return A dgCMatrix object containing the data read from the Matrix Market file.
+#' @examples
+#' \dontrun{
+#' sparse_mat <- fmm_to_sparse_Matrix("sparse_matrix.mtx")
+#' }
+NULL
+
 #' @export vec_to_fmm
 #' @rdname vec_to_fmm
 #' @name vec_to_fmm
@@ -25,7 +59,6 @@
 #' }
 NULL
 
-# Documentation for mat_to_fmm
 #' @export mat_to_fmm
 #' @rdname mat_to_fmm
 #' @name mat_to_fmm
@@ -44,7 +77,6 @@ NULL
 #' }
 NULL
 
-# Documentation for sparse_to_fmm
 #' @export sparse_to_fmm
 #' @rdname sparse_to_fmm
 #' @name sparse_to_fmm

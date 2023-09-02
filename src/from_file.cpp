@@ -21,7 +21,7 @@ fmm_to_vec(const std::string &filename) {
   std::ifstream file_stream;
   std::vector<double> vec;
 
-  file_stream.open(filename, std::ios::binary);
+  file_stream.open(filename);
   if (!file_stream) {
     throw std::runtime_error("Failed to open file: " + filename);
   }
@@ -39,7 +39,7 @@ fmm_to_mat(const std::string &filename) {
   fmm::matrix_market_header header;
   std::vector<double> vec;
 
-  file_stream.open(filename, std::ios::binary);
+  file_stream.open(filename);
   if (!file_stream) {
     throw std::runtime_error("Failed to open file: " + filename);
   }
@@ -68,7 +68,7 @@ fmm_to_sparse_Matrix(const std::string &filename) {
 
   // Initialize file stream and read header, row indices, column pointers, and
   // values
-  std::ifstream file_stream(filename, std::ios::binary);
+  std::ifstream file_stream(filename);
   if (!file_stream.is_open()) {
     throw std::runtime_error("Failed to open file: " + filename);
   }

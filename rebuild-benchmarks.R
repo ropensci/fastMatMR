@@ -13,4 +13,7 @@ setwd("vignettes/")
 knitr::knit("fmm_write_bench.Rmd.orig", output = "fmm_write_bench.Rmd")
 knitr::purl("fmm_write_bench.Rmd.orig", output = "fmm_write_bench.R")
 
+knitr::knit("fmm_read_bench.Rmd.orig", output = "fmm_read_bench.Rmd")
+knitr::purl("fmm_read_bench.Rmd.orig", output = "fmm_read_bench.R")
+
 setwd(old_wd)

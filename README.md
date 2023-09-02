@@ -27,6 +27,10 @@ library](https://github.com/alugowski/fast_matrix_market) (version
 - **Performance**: The package is a thin wrapper around one of the
   fastest C++ libraries for reading and writing `.mtx` files.
 
+- **Correctness**: Unlike `Matrix`, roundtripping with `NA` and `NaN`
+  values works by coercing to `NaN` instead of to arbitrarily high
+  numbers.
+
 ## Installation
 
 You can install the development version of `fastMatMR` from

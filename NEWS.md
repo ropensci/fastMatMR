@@ -2,12 +2,16 @@ This is the changelog for the `fastMatMR` package.
 
 <!-- towncrier release notes start -->
 
-0.0.1.0 (2023-08-31)
+# 0.0.1.0 (2023-09-02)
 
-No significant changes.
+## Features
+
+- Support reading `R` numeric vectors (`is.vector()`)
+- Support reading of `R` `is.matrix()` numerical matrices
+- Support reading sparse matrices from Matrix.
 
 
-0.0.0.9000 (2023-08-31)
+# 0.0.0.9000 (2023-08-31)
 
 ## Improved Documentation
 

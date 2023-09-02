@@ -38,3 +38,8 @@ test_that("Sparse matrix diagonal equivalence", {
   read_spmat <- Matrix::readMM("sparse.mtx")
   expect_true(all(original_spmat == read_spmat))
 })
+
+# Clean up test files
+file.remove("vector.mtx")
+file.remove("matrix.mtx")
+file.remove("sparse.mtx")

@@ -34,9 +34,9 @@ src = "DESCRIPTION"
 [[before_commit]]
 name = 'rgenerate codemeta'
 cmd = "Rscript -e 'codemetar::write_codemeta()'"
-[[before_commit]]
-name = 'generate news'
-cmd = "towncrier build --version $(tbump current-version)"
+# [[before_commit]]
+# name = 'generate news'
+# cmd = "towncrier build --version $(tbump current-version)"
 
 #  [[before_commit]]
 #  name = "check changelog"

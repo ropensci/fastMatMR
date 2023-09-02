@@ -1,10 +1,10 @@
 ---
-title: "Benchmarking Sparse Matrix Market File Operations"
+title: "Benchmarking Sparse Matrix Market Write Operations"
 author: "Rohit Goswami"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Benchmarking Sparse Matrix Market File Operations}
+  %\VignetteIndexEntry{Benchmarking Sparse Matrix Market Write Operations}
   %\VignetteEngine{knitr::rmarkdown}
 ---
 
@@ -83,14 +83,14 @@ for (n in sizes) {
 
 This is shown visually represented below:
 
-```{r fixed-sparse}
+```{r fixed-sparse-write}
 # Plotting
 suppressWarnings(print(
   ggplot(results_fixed_sparsity, aes(x = size, y = time, color = expr)) +
     geom_point() +
-    geom_smooth(method = 'loess') +
+    geom_smooth(method = "loess") +
     scale_y_log10() +
-    ggtitle("Benchmarking with Fixed Sparsity") +
+    ggtitle("Benchmarking reads with fixed sparsity for 70% sparsity") +
     xlab("Matrix Size") +
     ylab("Time (ns, log10)")
 ))
@@ -129,13 +129,13 @@ for (sparsity in sparsity_levels) {
 
 Now we can plot this:
 
-```{r varying-sparse}
+```{r varying-sparse-write}
 ggplot(results_varying_sparsity, aes(x = sparsity, y = time, color = expr)) +
   geom_point() +
-  geom_smooth(method = 'loess') +
+  geom_smooth(method = "loess") +
   scale_x_log10() +
   scale_y_log10() +
-  ggtitle("Benchmarking with Varying Sparsity") +
+  ggtitle("Benchmarking reads with varying sparsity for 500 entries") +
   xlab("Sparsity Level (log10)") +
   ylab("Time (ns, log10)")
 ```

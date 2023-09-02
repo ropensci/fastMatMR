@@ -31,15 +31,14 @@ for:
 - **Dense Vectors**: Writing standard R vectors to `.mtx` files.
 - **Dense Matrices**: Writing standard R matrices to `.mtx` files.
 - **Sparse Matrices**: A more efficient way of reading and writing sparse
-  matrices. For performance benchmarks, see [our performance
-  vignette](vignette("fmm_write_bench")).
+  matrices. For performance benchmarks, see performance our vignettes for [write](vignette("fmm_write_bench")) and [read](vignette("fmm_read_bench")) operations.
 
 # Installation
 
 To install the development version of `fastMatMR` from GitHub:
 
 ```{r, eval=FALSE}
-# install.packages("devtools")
+install.packages("devtools")
 devtools::install_github("HaoZeke/fastMatMR")
 ```
 
@@ -74,6 +73,32 @@ sp_mat <- Matrix::sparseMatrix(i = c(1, 3), j = c(2, 4), x = 7:8)
 write_fmm(sp_mat, "sparse.mtx")
 ```
 
+## Reading Matrix Market files
+
+- `fastMatMR` will correctly roundtrip `NaN` values.
+- `NA` values are not supported by the Matrix Market format, and are coerced to `NaN`
+
+### With Dense Vectors
+
+This is not supported by `Matrix`.
+
+```{r}
+vec <- c(1, 2, 3.32, 225.61)
+vec_to_fmm(vec, "vector.mtx")
+fmm_to_vec("vector.mtx")
+```
+
+
+### Addenum
+
+Consider:
+
+```{r}
+spmat <- Matrix::Matrix(c(1, 0, 3, NA), nrow = 2, sparse = TRUE)
+Matrix::writeMM(spmat, "sparse_na.mtx")
+Matrix::readMM("sparse_na.mtx")
+```
+
 ## Reading Back In Python
 
 You can read the `.mtx` files back in Python:
@@ -83,9 +108,10 @@ pip install fast_matrix_market
 python -c 'import fast_matrix_market as fmm; print(fmm.read_array_or_coo("sparse.mtx"))'
 ```
 
+
 # Summary
 
 `fastMatMR` offers unique capabilities in the R ecosystem for working with
 Matrix Market files, including support for dense vectors and matrices. It also
 provides high-performance sparse matrix operations, as benchmarked in our
-[performance vignette](vignette("fmm_write_bench")).
+performance vignettes for [write](vignette("fmm_write_bench")) and [read](vignette("fmm_read_bench")) operations.

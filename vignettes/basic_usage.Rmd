@@ -31,8 +31,7 @@ for:
 - **Dense Vectors**: Writing standard R vectors to `.mtx` files.
 - **Dense Matrices**: Writing standard R matrices to `.mtx` files.
 - **Sparse Matrices**: A more efficient way of reading and writing sparse
-  matrices. For performance benchmarks, see [our performance
-  vignette](vignette("fmm_write_bench")).
+  matrices. For performance benchmarks, see performance our vignettes for [write](vignette("fmm_write_bench")) and [read](vignette("fmm_read_bench")) operations.
 
 # Installation
 
@@ -89,6 +88,7 @@ vec_to_fmm(vec, "vector.mtx")
 fmm_to_vec("vector.mtx")
 ```
 
+
 ### Addenum
 
 Consider:
@@ -123,4 +123,4 @@ python -c 'import fast_matrix_market as fmm; print(fmm.read_array_or_coo("sparse
 `fastMatMR` offers unique capabilities in the R ecosystem for working with
 Matrix Market files, including support for dense vectors and matrices. It also
 provides high-performance sparse matrix operations, as benchmarked in our
-[performance vignette](vignette("fmm_write_bench")).
+performance vignettes for [write](vignette("fmm_write_bench")) and [read](vignette("fmm_read_bench")) operations.

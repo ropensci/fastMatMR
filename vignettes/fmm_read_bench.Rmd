@@ -88,7 +88,7 @@ This is shown visually represented below:
 suppressWarnings(print(
       ggplot(results_fixed_sparsity, aes(x = size, y = time, color = expr)) +
         geom_point() +
-        geom_smooth(method = 'loess') +
+        geom_smooth(method = "loess") +
         ggtitle("Benchmarking reads with fixed sparsity for 70% sparsity") +
         xlab("Matrix Size") +
         ylab("Time (ns)")
@@ -145,7 +145,7 @@ Now we can plot this:
 ```r
 ggplot(results_varying_sparsity, aes(x = sparsity, y = time, color = expr)) +
   geom_point() +
-  geom_smooth(method = 'loess') +
+  geom_smooth(method = "loess") +
   scale_x_log10() +
   scale_y_log10() +
   ggtitle("Benchmarking reads with varying sparsity for 2000 entries") +

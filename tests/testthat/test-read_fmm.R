@@ -10,7 +10,9 @@ example_mat <- matrix(runif(n = 6, min = 1, max = 20), nrow = 3)
 write_fmm(example_mat, "example_mat.mtx")
 
 # Create a test file for fmm_to_sparse_Matrix
-example_sparse_mat <- sparseMatrix(i = c(1, 3, 2, 4), j = c(1, 3, 3, 4), x = c(4, 3, 1, 6))
+example_sparse_mat <- sparseMatrix(i = c(1, 3, 2, 4),
+                                   j = c(1, 3, 3, 4),
+                                   x = c(4, 3, 1, 6))
 writeMM(example_sparse_mat, "example_sparse_mat.mtx")
 
 # Test for fmm_to_vec

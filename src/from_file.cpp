@@ -45,15 +45,15 @@ cpp11::doubles_matrix<> fmm_to_mat(const std::string& filename) {
     fmm::read_matrix_market_array(file_stream, header, vec);
     file_stream.close();
 
-    size_t nrow = header.nrows;
+    size_t nrows = header.nrows;
     size_t ncols = header.ncols;
-    cpp11::writable::doubles_matrix<> mat(nrow, ncols);
-    for (size_t i = 0; i < nrow; ++i) {
-        for (size_t j = 0; j < ncols; ++j) {
-            mat(i, j) = vec[i + j * nrow];
+    cpp11::writable::doubles_matrix<> mat(nrows, ncols);
+   // Fill in the writable matrix in column-major order
+    for (size_t j = 0; j < ncols; ++j) {
+        for (size_t i = 0; i < nrows; ++i) {
+            mat(i, j) = vec[j + i * ncols];
         }
     }
-
     return mat;
 }
 
@@ -62,8 +62,6 @@ cpp11::doubles_matrix<> fmm_to_mat(const std::string& filename) {
 cpp11::sexp fmm_to_sparse_Matrix(const std::string& filename) {
     // TODO: Can speed this up by constructing from SEXP instead of via Matrix
     // constructor later
-    // Instead of constructing a redundant triplet matrix and then coercing as
-    // readMM does, this produces efficient sparse matrices
     using namespace cpp11::literals;
     
     // Initialize file stream and read header, row indices, column pointers, and values

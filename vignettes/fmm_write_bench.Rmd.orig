@@ -90,7 +90,7 @@ suppressWarnings(print(
     geom_point() +
     geom_smooth(method = "loess") +
     scale_y_log10() +
-    ggtitle("Benchmarking reads with fixed sparsity for 70% sparsity") +
+    ggtitle("Benchmarking writes with fixed sparsity for 70% sparsity") +
     xlab("Matrix Size") +
     ylab("Time (ns, log10)")
 ))
@@ -135,7 +135,7 @@ ggplot(results_varying_sparsity, aes(x = sparsity, y = time, color = expr)) +
   geom_smooth(method = "loess") +
   scale_x_log10() +
   scale_y_log10() +
-  ggtitle("Benchmarking reads with varying sparsity for 500 entries") +
+  ggtitle("Benchmarking writes with varying sparsity for 500 entries") +
   xlab("Sparsity Level (log10)") +
   ylab("Time (ns, log10)")
 ```

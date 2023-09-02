@@ -195,7 +195,7 @@ sessionInfo()
 #> 
 #> other attached packages:
 #> [1] ggplot2_3.4.3         microbenchmark_1.4.10 Matrix_1.6-1         
-#> [4] fastMatMR_0.0.1.0     testthat_3.1.10      
+#> [4] fastMatMR_1.0.0.0     testthat_3.1.10      
 #> 
 #> loaded via a namespace (and not attached):
 #>  [1] gtable_0.3.4      xfun_0.40         htmlwidgets_1.6.2 devtools_2.4.5   

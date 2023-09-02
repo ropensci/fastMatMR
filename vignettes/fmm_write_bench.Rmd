@@ -87,7 +87,7 @@ suppressWarnings(print(
     geom_point() +
     geom_smooth(method = "loess") +
     scale_y_log10() +
-    ggtitle("Benchmarking reads with fixed sparsity for 70% sparsity") +
+    ggtitle("Benchmarking writes with fixed sparsity for 70% sparsity") +
     xlab("Matrix Size") +
     ylab("Time (ns, log10)")
 ))
@@ -151,7 +151,7 @@ ggplot(results_varying_sparsity, aes(x = sparsity, y = time, color = expr)) +
   geom_smooth(method = "loess") +
   scale_x_log10() +
   scale_y_log10() +
-  ggtitle("Benchmarking reads with varying sparsity for 500 entries") +
+  ggtitle("Benchmarking writes with varying sparsity for 500 entries") +
   xlab("Sparsity Level (log10)") +
   ylab("Time (ns, log10)")
 #> `geom_smooth()` using formula = 'y ~ x'
@@ -199,7 +199,7 @@ sessionInfo()
 #> 
 #> other attached packages:
 #> [1] ggplot2_3.4.3         microbenchmark_1.4.10 Matrix_1.6-1         
-#> [4] fastMatMR_0.0.1.0     testthat_3.1.10      
+#> [4] fastMatMR_1.0.0.0     testthat_3.1.10      
 #> 
 #> loaded via a namespace (and not attached):
 #>  [1] gtable_0.3.4      xfun_0.40         htmlwidgets_1.6.2 devtools_2.4.5   

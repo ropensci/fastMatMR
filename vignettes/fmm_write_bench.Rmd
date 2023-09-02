@@ -1,10 +1,10 @@
 ---
-title: "Benchmarking Sparse Matrix Market File Operations"
+title: "Benchmarking Sparse Matrix Market Write Operations"
 author: "Rohit Goswami"
-date: "2023-08-31"
+date: "2023-09-02"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Benchmarking Sparse Matrix Market File Operations}
+  %\VignetteIndexEntry{Benchmarking Sparse Matrix Market Write Operations}
   %\VignetteEngine{knitr::rmarkdown}
 ---
 
@@ -87,7 +87,7 @@ suppressWarnings(print(
     geom_point() +
     geom_smooth(method = 'loess') +
     scale_y_log10() +
-    ggtitle("Benchmarking with Fixed Sparsity") +
+    ggtitle("Benchmarking reads with fixed sparsity for 70% sparsity") +
     xlab("Matrix Size") +
     ylab("Time (ns, log10)")
 ))
@@ -95,8 +95,8 @@ suppressWarnings(print(
 ```
 
 <div class="figure">
-<img src="fixed-sparse-1.png" alt="plot of chunk fixed-sparse" width="800" />
-<p class="caption">plot of chunk fixed-sparse</p>
+<img src="fixed-sparse-write-1.png" alt="plot of chunk fixed-sparse-write" width="800" />
+<p class="caption">plot of chunk fixed-sparse-write</p>
 </div>
 
 ## Benchmarking with Varying Sparsity
@@ -151,15 +151,15 @@ ggplot(results_varying_sparsity, aes(x = sparsity, y = time, color = expr)) +
   geom_smooth(method = 'loess') +
   scale_x_log10() +
   scale_y_log10() +
-  ggtitle("Benchmarking with Varying Sparsity") +
+  ggtitle("Benchmarking reads with varying sparsity for 500 entries") +
   xlab("Sparsity Level (log10)") +
   ylab("Time (ns, log10)")
 #> `geom_smooth()` using formula = 'y ~ x'
 ```
 
 <div class="figure">
-<img src="varying-sparse-1.png" alt="plot of chunk varying-sparse" width="800" />
-<p class="caption">plot of chunk varying-sparse</p>
+<img src="varying-sparse-write-1.png" alt="plot of chunk varying-sparse-write" width="800" />
+<p class="caption">plot of chunk varying-sparse-write</p>
 </div>
 
 ## Conclusions
@@ -199,7 +199,7 @@ sessionInfo()
 #> 
 #> other attached packages:
 #> [1] ggplot2_3.4.3         microbenchmark_1.4.10 Matrix_1.6-1         
-#> [4] fastMatMR_0.0.0.9000  testthat_3.1.10      
+#> [4] fastMatMR_0.0.1.0     testthat_3.1.10      
 #> 
 #> loaded via a namespace (and not attached):
 #>  [1] gtable_0.3.4      xfun_0.40         htmlwidgets_1.6.2 devtools_2.4.5   

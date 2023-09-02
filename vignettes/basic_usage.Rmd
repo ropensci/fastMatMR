@@ -83,7 +83,7 @@ write_fmm(sp_mat, "sparse.mtx")
 This is not supported by `Matrix`.
 
 ```{r}
-vec <- c(1, 2, 3.32, NaN)
+vec <- c(1, 2, 3.32, 225.61)
 vec_to_fmm(vec, "vector.mtx")
 fmm_to_vec("vector.mtx")
 ```
@@ -97,15 +97,6 @@ Consider:
 spmat <- Matrix::Matrix(c(1, 0, 3, NA), nrow = 2, sparse = TRUE)
 Matrix::writeMM(spmat, "sparse_na.mtx")
 Matrix::readMM("sparse_na.mtx")
-```
-
-Which returns:
-
-```{r eval=FALSE}
-# 2 x 2 sparse Matrix of class "dgTMatrix"
-
-# [1,] 1  3e+00
-# [2,] . 1e+308
 ```
 
 ## Reading Back In Python

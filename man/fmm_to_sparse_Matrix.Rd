@@ -7,10 +7,12 @@
 \item{filename}{The name of the input Matrix Market file to be read.}
 }
 \value{
-A dgCMatrix object containing the data read from the Matrix Market file.
+A dgCMatrix object containing the data read from the Matrix Market
+file.
 }
 \description{
-This function reads a Matrix Market file and converts it to a sparse matrix in R using the Matrix package.
+This function reads a Matrix Market file and converts it to a
+sparse matrix in R using the Matrix package.
 }
 \examples{
 \dontrun{

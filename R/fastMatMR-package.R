@@ -6,9 +6,11 @@
 #' @rdname fmm_to_vec
 #' @name fmm_to_vec
 #' @title Convert Matrix Market File to Numeric Vector
-#' @description This function reads a Matrix Market file and converts it to a numeric vector in R.
+#' @description This function reads a Matrix Market file and converts it to a
+#'   numeric vector in R.
 #' @param filename The name of the input Matrix Market file to be read.
-#' @return A numeric vector containing the data read from the Matrix Market file.
+#' @return A numeric vector containing the data read from the Matrix Market
+#'   file.
 #' @examples
 #' \dontrun{
 #' vec <- fmm_to_vec("matrix.mtx")
@@ -19,7 +21,8 @@ NULL
 #' @rdname fmm_to_mat
 #' @name fmm_to_mat
 #' @title Convert Matrix Market File to Matrix
-#' @description This function reads a Matrix Market file and converts it to a matrix in R.
+#' @description This function reads a Matrix Market file and converts it to a
+#'   matrix in R.
 #' @param filename The name of the input Matrix Market file to be read.
 #' @return A matrix containing the data read from the Matrix Market file.
 #' @examples
@@ -32,9 +35,11 @@ NULL
 #' @rdname fmm_to_sparse_Matrix
 #' @name fmm_to_sparse_Matrix
 #' @title Convert Matrix Market File to Sparse Matrix
-#' @description This function reads a Matrix Market file and converts it to a sparse matrix in R using the Matrix package.
+#' @description This function reads a Matrix Market file and converts it to a
+#'   sparse matrix in R using the Matrix package.
 #' @param filename The name of the input Matrix Market file to be read.
-#' @return A dgCMatrix object containing the data read from the Matrix Market file.
+#' @return A dgCMatrix object containing the data read from the Matrix Market
+#'   file.
 #' @examples
 #' \dontrun{
 #' sparse_mat <- fmm_to_sparse_Matrix("sparse_matrix.mtx")

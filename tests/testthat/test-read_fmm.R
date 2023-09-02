@@ -6,7 +6,7 @@ example_vec <- c(1, 2, 3)
 write_fmm(example_vec, "example_vec.mtx")
 
 # Create a test file for fmm_to_mat
-example_mat <- matrix(runif(n = 6, min=1, max = 20), nrow=3)
+example_mat <- matrix(runif(n = 6, min = 1, max = 20), nrow = 3)
 write_fmm(example_mat, "example_mat.mtx")
 
 # Create a test file for fmm_to_sparse_Matrix
@@ -36,5 +36,5 @@ test_that("fmm_to_sparse_Matrix returns correct output", {
 
 # Clean up test files
 file.remove("example_vec.mtx")
-## file.remove("example_mat.mtx")
+file.remove("example_mat.mtx")
 file.remove("example_sparse_mat.mtx")

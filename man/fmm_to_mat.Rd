@@ -10,7 +10,8 @@
 A matrix containing the data read from the Matrix Market file.
 }
 \description{
-This function reads a Matrix Market file and converts it to a matrix in R.
+This function reads a Matrix Market file and converts it to a
+matrix in R.
 }
 \examples{
 \dontrun{

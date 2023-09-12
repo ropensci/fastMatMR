@@ -2,7 +2,7 @@ This is the changelog for the `fastMatMR` package.
 
 <!-- towncrier release notes start -->
 
-# 0.0.1.0 (2023-09-02)
+# fastMatMR 0.0.1.0 (2023-09-02)
 
 ## Features
 
@@ -11,7 +11,7 @@ This is the changelog for the `fastMatMR` package.
 - Support reading sparse matrices from Matrix.
 
 
-# 0.0.0.9000 (2023-08-31)
+# fastMatMR 0.0.0.9000 (2023-08-31)
 
 ## Improved Documentation
 

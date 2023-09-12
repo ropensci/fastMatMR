@@ -31,7 +31,69 @@ Co-authored-by: name <name@example.com>
 Co-authored-by: another-name <another-name@example.com>
 ```
 
-## Getting Started
+## Development
 
-The `README.md` has developer setup instructions. Your contributions make this
-project better for everyone. Thank you for participating!
+Your contributions make this project better for everyone. Thank you for
+participating!
+
+### Local Development
+
+Often it is useful to have [pixi](https://prefix.dev/) handle the dependencies:
+
+```bash
+pixi shell
+```
+
+A `pre-commit` job is set up on CI to enforce consistent styles. It is advisable
+to set it up locally as well using [pipx](https://pypa.github.io/pipx/) for
+isolation:
+
+```bash
+# Run before committing
+pipx run pre-commit run --all-files
+# Or install the git hook to enforce this
+pipx run pre-commit install
+```
+
+For working with packages with compiled extensions, instead of `devtools::load_all()` it can be more useful to run this instead:
+
+```{r eval=FALSE}
+devtools::clean_dll()
+cpp11::cpp_register()
+devtools::document()
+devtools::load_all()
+```
+
+Also don't forget to recreate the `readme` file:
+```{r eval=FALSE}
+devtools::build_readme()
+```
+
+If you find that `pre-commit` for R is flaky, you can consider the following commands:
+
+```bash
+find . \( -path "./.pixi" -o -path "./renv" \) -prune -o -type f -name "*.R" -exec Rscript -e 'library(styler); style_file("{}")' \;
+Rscript -e 'library(lintr); lintr::lint_package(".")'
+```
+
+#### Tests
+
+Tests and checks are run on the CI, however locally one can use:
+
+```bash
+Rscript -e 'devtools::test()'
+```
+
+
+#### Documentation
+
+Ideally each change should be documented. Major changes should be `vignettes`,
+and minor ones can be added to `newsfragments`.
+
+Benchmark vignettes are pre-computed via:
+
+```bash
+Rscript rebuild-benchmarks.R
+```
+
+Which makes it faster to build the package and run checks.

@@ -43,8 +43,8 @@ devtools::install_github("HaoZeke/fastMatMR")
 
 ```{r eval=FALSE}
 library(fastMatMR)
-Matrix::Matrix(c(1, 0, 3, 2), nrow = 2, sparse = TRUE) -> spmat
-write_fmm(vec, "vector.mtx")
+spmat <- Matrix::Matrix(c(1, 0, 3, 2), nrow = 2, sparse = TRUE)
+write_fmm(spmat, "sparse.mtx")
 ```
 
 To see what this does, consider reading it back in `python`:
@@ -53,59 +53,14 @@ To see what this does, consider reading it back in `python`:
 pip install fast_matrix_market
 python -c 'import fast_matrix_market as fmm; print(fmm.read_array_or_coo("sparse.mtx"))'
 ((array([1., 3., 2.]), (array([0, 0, 1], dtype=int32), array([0, 1, 1], dtype=int32))), (2, 2))
+python -c 'import fast_matrix_market as fmm; print(fmm.read_array("sparse.mtx"))'
+array([[1., 3.],
+       [0., 2.]])
 ```
 
-Similarly, we support writing and reading from other `R` objects.
-
-## Development
-
-### Local Development
-
-Often it is useful to have `pixi` handle the dependencies:
-
-```bash
-pixi shell
-```
-
-A `pre-commit` job is set up on CI to enforce consistent styles. It is advisable
-to set it up locally as well using [pipx](https://pypa.github.io/pipx/) for
-isolation:
-
-```bash
-# Run before committing
-pipx run pre-commit run --all-files
-# Or install the git hook to enforce this
-pipx run pre-commit install
-```
-
-If you find that `pre-commit` for R is flaky, you can consider the following commands:
-
-```bash
-find . \( -path "./.pixi" -o -path "./renv" \) -prune -o -type f -name "*.R" -exec Rscript -e 'library(styler); style_file("{}")' \;
-Rscript -e 'library(lintr); lintr::lint_package(".")'
-```
-
-#### Tests
-
-Tests and checks are run on the CI, however locally one can use:
-
-```bash
-Rscript -e 'devtools::test()'
-```
-
-
-#### Documentation
-
-Ideally each change should be documented. Major changes should be `vignettes`,
-and minor ones can be added to `newsfragments`.
-
-Benchmark vignettes are pre-computed via:
-
-```bash
-Rscript rebuild-benchmarks.R
-```
-
-Which makes it faster to build the package and run checks.
+Similarly, we support writing and reading from other `R` objects (e.g. standard
+R vectors and matrices), as seen in the [basic use
+vignette](https://haozeke.github.io/fastMatMR/articles/basic_usage.html).
 
 ## License
 

@@ -8,6 +8,8 @@
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![DOI](https://zenodo.org/badge/685246044.svg)](https://zenodo.org/badge/latestdoi/685246044)
+[![Status at rOpenSci Software Peer
+Review](https://badges.ropensci.org/606_status.svg)](https://github.com/ropensci/software-review/issues/606)
 <!-- badges: end -->
 
 ## About

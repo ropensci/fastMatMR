@@ -131,12 +131,14 @@ NULL
 #'
 #' @export
 write_fmm <- function(input, filename = "out.mtx") {
+  # Expand the ~ character to the full path
+  expanded_fname <- path.expand(filename)
   if (is.vector(input)) {
-    return(vec_to_fmm(input, filename)) # nolint. C++ function.
+    return(vec_to_fmm(input, expanded_fname)) # nolint. C++ function.
   } else if (is.matrix(input)) {
-    return(mat_to_fmm(input, filename)) # nolint. C++ function.
+    return(mat_to_fmm(input, expanded_fname)) # nolint. C++ function.
   } else if (inherits(input, "sparseMatrix")) {
-    return(sparse_to_fmm(input, filename)) # nolint. C++ function.
+    return(sparse_to_fmm(input, expanded_fname)) # nolint. C++ function.
   } else {
     stop(
       paste(

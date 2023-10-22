@@ -17,7 +17,7 @@ namespace fmm = fast_matrix_market;
 
 [[cpp11::register]] //
 cpp11::doubles
-fmm_to_vec(const std::string &filename) {
+cpp_fmm_to_vec(const std::string &filename) {
   std::ifstream file_stream;
   std::vector<double> vec;
 
@@ -34,7 +34,7 @@ fmm_to_vec(const std::string &filename) {
 
 [[cpp11::register]] //
 cpp11::doubles_matrix<>
-fmm_to_mat(const std::string &filename) {
+cpp_fmm_to_mat(const std::string &filename) {
   std::ifstream file_stream;
   fmm::matrix_market_header header;
   std::vector<double> vec;
@@ -61,7 +61,7 @@ fmm_to_mat(const std::string &filename) {
 
 [[cpp11::register]] //
 cpp11::sexp
-fmm_to_sparse_Matrix(const std::string &filename) {
+cpp_fmm_to_sparse_Matrix(const std::string &filename) {
   // TODO: Can speed this up by constructing from SEXP instead of via Matrix
   // constructor later
   using namespace cpp11::literals;

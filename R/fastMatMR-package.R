@@ -15,7 +15,11 @@
 #' \dontrun{
 #' vec <- fmm_to_vec("matrix.mtx")
 #' }
-NULL
+fmm_to_vec <- function(filename) {
+  expanded_filename <- path.expand(filename)
+  result <- cpp_fmm_to_vec(expanded_filename)
+  return(result)
+}
 
 #' @export fmm_to_mat
 #' @rdname fmm_to_mat
@@ -29,7 +33,11 @@ NULL
 #' \dontrun{
 #' mat <- fmm_to_mat("matrix.mtx")
 #' }
-NULL
+fmm_to_mat <- function(filename) {
+  expanded_filename <- path.expand(filename)
+  result <- cpp_fmm_to_mat(expanded_filename)
+  return(result)
+}
 
 #' @export fmm_to_sparse_Matrix
 #' @rdname fmm_to_sparse_Matrix
@@ -44,7 +52,11 @@ NULL
 #' \dontrun{
 #' sparse_mat <- fmm_to_sparse_Matrix("sparse_matrix.mtx")
 #' }
-NULL
+fmm_to_sparse_Matrix <- function(filename) {
+  expanded_filename <- path.expand(filename)
+  result <- cpp_fmm_to_sparse_Matrix(expanded_filename)
+  return(result)
+}
 
 #' @export vec_to_fmm
 #' @rdname vec_to_fmm

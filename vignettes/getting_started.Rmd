@@ -23,6 +23,10 @@ of Matrix Market files. It wraps around the [fast_matrix_market C++
 library](https://github.com/alugowski/fast_matrix_market), ensuring optimal
 performance.
 
+Performance vignettes for [write](vignette("fmm_write_bench")) and
+[read](vignette("fmm_read_bench")) operations are also provided.
+
+
 ## Unique Features
 
 Unlike other packages, such as `Matrix`, `fastMatMR` offers extended support
@@ -52,14 +56,14 @@ library(fastMatMR)
 
 ## Writing Matrix Market files
 
-### With Dense Vectors (Not Supported by `Matrix`)
+### With Dense Vectors
 
 ```{r}
 vec <- c(1, 2, 3)
 write_fmm(vec, "vector.mtx")
 ```
 
-### With Dense Matrices (Not Supported by `Matrix`)
+### With Dense Matrices
 
 ```{r}
 mat <- matrix(c(1, 2, 3, 4), nrow = 2)
@@ -80,18 +84,19 @@ write_fmm(sp_mat, "sparse.mtx")
 
 ### With Dense Vectors
 
-This is not supported by `Matrix`.
-
 ```{r}
 vec <- c(1, 2, 3.32, 225.61)
 vec_to_fmm(vec, "vector.mtx")
 fmm_to_vec("vector.mtx")
 ```
 
+Similarly, other `fmm_to_` functions can be used to read from `.mtx` files.
 
-### Addenum
+## Addenum
 
-Consider:
+### Alternatives
+
+Sparse matrices can be written and read by the `Matrix` library:
 
 ```{r}
 spmat <- Matrix::Matrix(c(1, 0, 3, NA), nrow = 2, sparse = TRUE)
@@ -99,19 +104,16 @@ Matrix::writeMM(spmat, "sparse_na.mtx")
 Matrix::readMM("sparse_na.mtx")
 ```
 
-## Reading Back In Python
+However, as can be seen above, `NA` values are handled incorrectly, and dense
+matrices or vectors cannot be read or written in the matrix market format by the
+`Matrix` library.
 
-You can read the `.mtx` files back in Python:
+
+### Reading Back In Python
+
+Since the Matrix Market format is language agnostic, the `.mtx` files produced can even be read into Python:
 
 ```bash
 pip install fast_matrix_market
 python -c 'import fast_matrix_market as fmm; print(fmm.read_array_or_coo("sparse.mtx"))'
 ```
-
-
-# Summary
-
-`fastMatMR` offers unique capabilities in the R ecosystem for working with
-Matrix Market files, including support for dense vectors and matrices. It also
-provides high-performance sparse matrix operations, as benchmarked in our
-performance vignettes for [write](vignette("fmm_write_bench")) and [read](vignette("fmm_read_bench")) operations.

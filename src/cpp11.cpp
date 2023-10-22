@@ -50,12 +50,12 @@ extern "C" SEXP _fastMatMR_sparse_to_fmm(SEXP input, SEXP filename) {
 
 extern "C" {
 static const R_CallMethodDef CallEntries[] = {
-    {"_fastMatMR_fmm_to_mat",           (DL_FUNC) &_fastMatMR_fmm_to_mat,           1},
-    {"_fastMatMR_fmm_to_sparse_Matrix", (DL_FUNC) &_fastMatMR_fmm_to_sparse_Matrix, 1},
-    {"_fastMatMR_fmm_to_vec",           (DL_FUNC) &_fastMatMR_fmm_to_vec,           1},
-    {"_fastMatMR_mat_to_fmm",           (DL_FUNC) &_fastMatMR_mat_to_fmm,           2},
-    {"_fastMatMR_sparse_to_fmm",        (DL_FUNC) &_fastMatMR_sparse_to_fmm,        2},
-    {"_fastMatMR_vec_to_fmm",           (DL_FUNC) &_fastMatMR_vec_to_fmm,           2},
+    {"_fastMatMR_cpp_fmm_to_mat",           (DL_FUNC) &_fastMatMR_cpp_fmm_to_mat,           1},
+    {"_fastMatMR_cpp_fmm_to_sparse_Matrix", (DL_FUNC) &_fastMatMR_cpp_fmm_to_sparse_Matrix, 1},
+    {"_fastMatMR_cpp_fmm_to_vec",           (DL_FUNC) &_fastMatMR_cpp_fmm_to_vec,           1},
+    {"_fastMatMR_mat_to_fmm",               (DL_FUNC) &_fastMatMR_mat_to_fmm,               2},
+    {"_fastMatMR_sparse_to_fmm",            (DL_FUNC) &_fastMatMR_sparse_to_fmm,            2},
+    {"_fastMatMR_vec_to_fmm",               (DL_FUNC) &_fastMatMR_vec_to_fmm,               2},
     {NULL, NULL, 0}
 };
 }

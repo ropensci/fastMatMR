@@ -3,6 +3,9 @@
 \name{fmm_to_sparse_Matrix}
 \alias{fmm_to_sparse_Matrix}
 \title{Convert Matrix Market File to Sparse Matrix}
+\usage{
+fmm_to_sparse_Matrix(filename)
+}
 \arguments{
 \item{filename}{The name of the input Matrix Market file to be read.}
 }

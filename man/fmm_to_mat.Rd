@@ -3,6 +3,9 @@
 \name{fmm_to_mat}
 \alias{fmm_to_mat}
 \title{Convert Matrix Market File to Matrix}
+\usage{
+fmm_to_mat(filename)
+}
 \arguments{
 \item{filename}{The name of the input Matrix Market file to be read.}
 }

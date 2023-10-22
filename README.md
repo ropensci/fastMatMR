@@ -22,9 +22,31 @@ library](https://github.com/alugowski/fast_matrix_market) (version
 
 ## Why?
 
-- **Extended Support**: Unlike the `Matrix` package, which only handles
-  sparse matrices, `fastMatMR` supports standard R vectors, matrices, as
-  well as `Matrix` sparse objects.
+[Matrix Market files](https://math.nist.gov/MatrixMarket/formats.html)
+are crucial to much of the data-science ecosystem. The `fastMatMR`
+package focuses on high-performance read and write operations for Matrix
+Market files, serving as a key tool for data extraction in computational
+and data science pipelines.
+
+The target audience and scientific applications primarily include data
+scientists or researchers developing numerical methods who may wish to
+either test standard NIST (National Institute of Standards and
+Technology) which include:
+
+> comparative studies of algorithms for numerical linear algebra,
+> featuring nearly 500 sparse matrices from a variety of applications,
+> as well as matrix generation tools and services.
+
+Additionally, being able to use the matrix market file format, means it
+is easier to interface `R` analysis with those in `Python` (e.g. `SciPy`
+uses the same underlying `C++` library). These files can also be used
+with the [Tensor Algebra
+Compiler](http://tensor-compiler.org/docs/tensors.html) (TACO).
+
+### Features
+
+- **Extended Support**: `fastMatMR` supports standard R vectors,
+  matrices, as well as `Matrix` sparse objects.
 
 - **Performance**: The package is a thin wrapper around one of the
   fastest C++ libraries for reading and writing `.mtx` files.
@@ -32,6 +54,22 @@ library](https://github.com/alugowski/fast_matrix_market) (version
 - **Correctness**: Unlike `Matrix`, roundtripping with `NA` and `NaN`
   values works by coercing to `NaN` instead of to arbitrarily high
   numbers.
+
+We have vignettes for both
+[read](https://haozeke.github.io/fastMatMR/articles/fmm_read_bench.html)
+and
+[write](https://haozeke.github.io/fastMatMR/articles/fmm_write_bench.html)
+operations to demonstrate the performance claims.
+
+#### Alternatives and statement of need
+
+- The `Matrix` package allows reading and writing sparse matrices in the
+  `.mtx` (matrix market) format.
+  - However, for `.mtx` files, it can only handles sparse matrices for
+    writing and reading.
+  - Round-tripping (writing and subsequently reading) data with `NA` and
+    `NaN` values produces arbitrarily high numbers instead of preserving
+    `NaN` / handling `NA`
 
 ## Installation
 
@@ -49,9 +87,11 @@ devtools::install_github("HaoZeke/fastMatMR")
 library(fastMatMR)
 spmat <- Matrix::Matrix(c(1, 0, 3, 2), nrow = 2, sparse = TRUE)
 write_fmm(spmat, "sparse.mtx")
+fmm_to_sparse_Matrix("sparse.mtx")
 ```
 
-To see what this does, consider reading it back in `python`:
+The resulting `.mtx` file is language agnostic, and can even be read
+back in `python` as an example:
 
 ``` bash
 pip install fast_matrix_market
@@ -62,8 +102,9 @@ array([[1., 3.],
        [0., 2.]])
 ```
 
-Similarly, we support writing and reading from other `R` objects
-(e.g. standard R vectors and matrices), as seen in the [basic use
+Similarly, `fastMatMR` supports writing and reading from other `R`
+objects (e.g. standard R vectors and matrices), as seen in the [basic
+use
 vignette](https://haozeke.github.io/fastMatMR/articles/basic_usage.html).
 
 ## License

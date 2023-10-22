@@ -53,7 +53,7 @@ NULL
 #' @description This function takes a numeric vector and converts it into a
 #'   Matrix Market file.
 #' @param input A numeric vector to be converted.
-#' @param fname The name of the output file where the Matrix Market formatted
+#' @param filename The name of the output file where the Matrix Market formatted
 #'   data will be saved.
 #' @return This function has no return value. It writes a Matrix Market
 #'   formatted file to disk.
@@ -71,7 +71,7 @@ NULL
 #' @description This function takes a numeric matrix and converts it into a
 #'   Matrix Market file.
 #' @param input A numeric matrix to be converted.
-#' @param fname The name of the output file where the Matrix Market formatted
+#' @param filename The name of the output file where the Matrix Market formatted
 #'   data will be saved.
 #' @return This function has no return value. It writes a Matrix Market
 #'   formatted file to disk.
@@ -89,7 +89,7 @@ NULL
 #' @description This function takes a sparse numeric matrix and converts it into
 #'   a Matrix Market file.
 #' @param input A sparse numeric matrix to be converted.
-#' @param fname The name of the output file where the Matrix Market formatted
+#' @param filename The name of the output file where the Matrix Market formatted
 #'   data will be saved.
 #' @return This function has no return value. It writes a Matrix Market
 #'   formatted file to disk.
@@ -108,7 +108,7 @@ NULL
 #'
 #' @param input A numeric object to be converted. This can be a numeric vector,
 #'   a matrix, or a sparse matrix.
-#' @param fname The name of the output file
+#' @param filename The name of the output file
 #'   where the Matrix Market formatted data will be saved.  It is recommended to
 #'   use a filename ending with ".mtx" for clarity.
 #'
@@ -130,13 +130,13 @@ NULL
 #' }
 #'
 #' @export
-write_fmm <- function(input, fname = "out.mtx") {
+write_fmm <- function(input, filename = "out.mtx") {
   if (is.vector(input)) {
-    return(vec_to_fmm(input, fname)) # nolint. C++ function.
+    return(vec_to_fmm(input, filename)) # nolint. C++ function.
   } else if (is.matrix(input)) {
-    return(mat_to_fmm(input, fname)) # nolint. C++ function.
+    return(mat_to_fmm(input, filename)) # nolint. C++ function.
   } else if (inherits(input, "sparseMatrix")) {
-    return(sparse_to_fmm(input, fname)) # nolint. C++ function.
+    return(sparse_to_fmm(input, filename)) # nolint. C++ function.
   } else {
     stop(
       paste(

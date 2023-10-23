@@ -28,6 +28,6 @@ intmat_to_fmm <- function(r_mat, filename) {
   .Call(`_fastMatMR_intmat_to_fmm`, r_mat, filename)
 }
 
-sparse_to_fmm <- function(input, filename) {
-  .Call(`_fastMatMR_sparse_to_fmm`, input, filename)
+sparse_Matrix_to_fmm <- function(input, filename) {
+  .Call(`_fastMatMR_sparse_Matrix_to_fmm`, input, filename)
 }

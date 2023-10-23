@@ -15,8 +15,7 @@ where the Matrix Market formatted data will be saved.  It is recommended to
 use a filename ending with ".mtx" for clarity.}
 }
 \value{
-This function has no return value. It writes a Matrix Market
-formatted file to disk.
+A boolean indicating success or failure. Writes a MTX file to disk.
 }
 \description{
 This function takes different types of numeric inputs—vectors, matrices, and

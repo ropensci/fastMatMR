@@ -16,10 +16,18 @@ vec_to_fmm <- function(r_vec, filename) {
   .Call(`_fastMatMR_vec_to_fmm`, r_vec, filename)
 }
 
+intvec_to_fmm <- function(r_vec, filename) {
+  .Call(`_fastMatMR_intvec_to_fmm`, r_vec, filename)
+}
+
 mat_to_fmm <- function(r_mat, filename) {
   .Call(`_fastMatMR_mat_to_fmm`, r_mat, filename)
 }
 
-sparse_to_fmm <- function(input, filename) {
-  .Call(`_fastMatMR_sparse_to_fmm`, input, filename)
+intmat_to_fmm <- function(r_mat, filename) {
+  .Call(`_fastMatMR_intmat_to_fmm`, r_mat, filename)
+}
+
+sparse_Matrix_to_fmm <- function(input, filename) {
+  .Call(`_fastMatMR_sparse_Matrix_to_fmm`, input, filename)
 }

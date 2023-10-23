@@ -48,6 +48,13 @@ extern "C" SEXP _fastMatMR_mat_to_fmm(SEXP r_mat, SEXP filename) {
   END_CPP11
 }
 // to_file.cpp
+bool intmat_to_fmm(cpp11::integers_matrix<> r_mat, std::string filename);
+extern "C" SEXP _fastMatMR_intmat_to_fmm(SEXP r_mat, SEXP filename) {
+  BEGIN_CPP11
+    return cpp11::as_sexp(intmat_to_fmm(cpp11::as_cpp<cpp11::decay_t<cpp11::integers_matrix<>>>(r_mat), cpp11::as_cpp<cpp11::decay_t<std::string>>(filename)));
+  END_CPP11
+}
+// to_file.cpp
 bool sparse_to_fmm(cpp11::sexp input, std::string filename);
 extern "C" SEXP _fastMatMR_sparse_to_fmm(SEXP input, SEXP filename) {
   BEGIN_CPP11
@@ -60,6 +67,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_fastMatMR_cpp_fmm_to_mat",           (DL_FUNC) &_fastMatMR_cpp_fmm_to_mat,           1},
     {"_fastMatMR_cpp_fmm_to_sparse_Matrix", (DL_FUNC) &_fastMatMR_cpp_fmm_to_sparse_Matrix, 1},
     {"_fastMatMR_cpp_fmm_to_vec",           (DL_FUNC) &_fastMatMR_cpp_fmm_to_vec,           1},
+    {"_fastMatMR_intmat_to_fmm",            (DL_FUNC) &_fastMatMR_intmat_to_fmm,            2},
     {"_fastMatMR_intvec_to_fmm",            (DL_FUNC) &_fastMatMR_intvec_to_fmm,            2},
     {"_fastMatMR_mat_to_fmm",               (DL_FUNC) &_fastMatMR_mat_to_fmm,               2},
     {"_fastMatMR_sparse_to_fmm",            (DL_FUNC) &_fastMatMR_sparse_to_fmm,            2},

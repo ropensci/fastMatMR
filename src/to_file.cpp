@@ -6,7 +6,7 @@
 #include <vector>
 
 #include "cpp11.hpp"
-#include "helpers.hpp"
+#include "helpers.h"
 
 #include "../inst/include/fast_matrix_market/fast_matrix_market.hpp"
 

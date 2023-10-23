@@ -91,7 +91,7 @@ bool intmat_to_fmm(cpp11::integers_matrix<> r_mat,
 }
 
 [[cpp11::register]] //
-bool sparse_to_fmm(cpp11::sexp input, std::string filename) {
+bool sparse_Matrix_to_fmm(cpp11::sexp input, std::string filename) {
   if (!is_matrix_loaded()) {
     throw std::runtime_error(
         "The 'Matrix' package cannot be loaded. Please install "

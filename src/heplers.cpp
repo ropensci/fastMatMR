@@ -1,5 +1,5 @@
-#include "helpers.hpp"
 #include "cpp11.hpp"
+#include "helpers.hpp"
 
 bool is_matrix_loaded() {
   SEXP matrixNamespace = R_FindNamespace(Rf_mkString("Matrix"));

@@ -109,6 +109,23 @@ NULL
 #' }
 NULL
 
+#' @export intmat_to_fmm
+#' @rdname intmat_to_fmm
+#' @name intmat_to_fmm
+#' @title Convert a Numeric Matrix to Matrix Market Format
+#' @description This function takes a numeric matrix and converts it into a
+#'   Matrix Market file.
+#' @param input A numeric matrix to be converted.
+#' @param filename The name of the output file where the Matrix Market formatted
+#'   data will be saved.
+#' @return A boolean indicating success or failure. Writes a MTX file to disk.
+#' @examples
+#' \dontrun{
+#' intmat <- matrix(c(1L, 2L, 3L, 4L), nrow = 2)
+#' intmat_to_fmm(intmat, "intmatrix.mtx")
+#' }
+NULL
+
 #' @export sparse_to_fmm
 #' @rdname sparse_to_fmm
 #' @name sparse_to_fmm
@@ -165,7 +182,11 @@ write_fmm <- function(input, filename = "out.mtx") {
       return(vec_to_fmm(input, expanded_fname)) # nolint. C++ function.
     }
   } else if (is.matrix(input)) {
-    return(mat_to_fmm(input, expanded_fname)) # nolint. C++ function.
+    if (is.integer(input)) {
+      return(intmat_to_fmm(input, expanded_fname)) # nolint. C++ function.
+    } else {
+      return(mat_to_fmm(input, expanded_fname)) # nolint. C++ function.
+    }
   } else if (inherits(input, "sparseMatrix")) {
     return(sparse_to_fmm(input, expanded_fname)) # nolint. C++ function.
   } else {

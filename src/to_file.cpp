@@ -72,6 +72,29 @@ bool mat_to_fmm(cpp11::doubles_matrix<> r_mat,
 }
 
 [[cpp11::register]] //
+bool intmat_to_fmm(cpp11::integers_matrix<> r_mat,
+                   std::string filename) {
+  int nrows = r_mat.nrow();
+  int ncols = r_mat.ncol();
+  std::vector<int> std_vec(nrows * ncols);
+  int k = 0;
+  for (int i = 0; i < nrows; ++i) {
+    for (int j = 0; j < ncols; ++j) {
+      std_vec[k++] = r_mat(i, j);
+    }
+  }
+  fmm::matrix_market_header header(nrows, ncols);
+  std::filesystem::path file_path(filename);
+  std::ofstream os(file_path);
+  if (!os.is_open()) {
+    return false;
+  }
+  fmm::write_matrix_market_array(os, header, std_vec);
+  os.close();
+  return true;
+}
+
+[[cpp11::register]] //
 bool sparse_to_fmm(cpp11::sexp input, std::string filename) {
   std::vector<int> i_vec, p_vec; // not set for diagonal sparse matrices
   std::vector<double> x_vec =

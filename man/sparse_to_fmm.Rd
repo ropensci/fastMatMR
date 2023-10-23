@@ -6,7 +6,7 @@
 \arguments{
 \item{input}{A sparse numeric matrix to be converted.}
 
-\item{fname}{The name of the output file where the Matrix Market formatted
+\item{filename}{The name of the output file where the Matrix Market formatted
 data will be saved.}
 }
 \value{

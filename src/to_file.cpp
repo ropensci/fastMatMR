@@ -17,13 +17,9 @@ bool vec_to_fmm(cpp11::doubles r_vec, std::string filename) {
   std::vector<double> std_vec(r_vec.size());
   std::copy(r_vec.begin(), r_vec.end(), std_vec.begin());
   fmm::matrix_market_header header(1, std_vec.size());
-  // header.comment = std::string("comment");
-  // Use C++17 filesystem to construct ofstream
   std::filesystem::path file_path(filename);
   std::ofstream os(file_path);
-
   if (!os.is_open()) {
-    // Handle error
     return false;
   }
   fmm::write_matrix_market_array(os, header, std_vec);

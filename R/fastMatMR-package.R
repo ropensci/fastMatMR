@@ -15,7 +15,11 @@
 #' \dontrun{
 #' vec <- fmm_to_vec("matrix.mtx")
 #' }
-NULL
+fmm_to_vec <- function(filename) {
+  expanded_filename <- path.expand(filename)
+  result <- cpp_fmm_to_vec(expanded_filename)
+  return(result)
+}
 
 #' @export fmm_to_mat
 #' @rdname fmm_to_mat
@@ -29,7 +33,11 @@ NULL
 #' \dontrun{
 #' mat <- fmm_to_mat("matrix.mtx")
 #' }
-NULL
+fmm_to_mat <- function(filename) {
+  expanded_filename <- path.expand(filename)
+  result <- cpp_fmm_to_mat(expanded_filename)
+  return(result)
+}
 
 #' @export fmm_to_sparse_Matrix
 #' @rdname fmm_to_sparse_Matrix
@@ -44,19 +52,22 @@ NULL
 #' \dontrun{
 #' sparse_mat <- fmm_to_sparse_Matrix("sparse_matrix.mtx")
 #' }
-NULL
+fmm_to_sparse_Matrix <- function(filename) {
+  expanded_filename <- path.expand(filename)
+  result <- cpp_fmm_to_sparse_Matrix(expanded_filename)
+  return(result)
+}
 
 #' @export vec_to_fmm
 #' @rdname vec_to_fmm
 #' @name vec_to_fmm
 #' @title Convert a Numeric Vector to Matrix Market Format
 #' @description This function takes a numeric vector and converts it into a
-#'   Matrix Market file.
+#'   Matrix Market output file.
 #' @param input A numeric vector to be converted.
-#' @param fname The name of the output file where the Matrix Market formatted
+#' @param filename The name of the output file where the Matrix Market formatted
 #'   data will be saved.
-#' @return This function has no return value. It writes a Matrix Market
-#'   formatted file to disk.
+#' @return A boolean indicating success or failure. Writes a MTX file to disk.
 #' @examples
 #' \dontrun{
 #' vec <- c(1, 2, 3)
@@ -71,10 +82,9 @@ NULL
 #' @description This function takes a numeric matrix and converts it into a
 #'   Matrix Market file.
 #' @param input A numeric matrix to be converted.
-#' @param fname The name of the output file where the Matrix Market formatted
+#' @param filename The name of the output file where the Matrix Market formatted
 #'   data will be saved.
-#' @return This function has no return value. It writes a Matrix Market
-#'   formatted file to disk.
+#' @return A boolean indicating success or failure. Writes a MTX file to disk.
 #' @examples
 #' \dontrun{
 #' mat <- matrix(c(1, 2, 3, 4), nrow = 2)
@@ -89,10 +99,9 @@ NULL
 #' @description This function takes a sparse numeric matrix and converts it into
 #'   a Matrix Market file.
 #' @param input A sparse numeric matrix to be converted.
-#' @param fname The name of the output file where the Matrix Market formatted
+#' @param filename The name of the output file where the Matrix Market formatted
 #'   data will be saved.
-#' @return This function has no return value. It writes a Matrix Market
-#'   formatted file to disk.
+#' @return A boolean indicating success or failure. Writes a MTX file to disk.
 #' @examples
 #' \dontrun{
 #' sparse_mat <- Matrix::Matrix(c(1, 0, 0, 2), nrow = 2, sparse = TRUE)
@@ -108,12 +117,11 @@ NULL
 #'
 #' @param input A numeric object to be converted. This can be a numeric vector,
 #'   a matrix, or a sparse matrix.
-#' @param fname The name of the output file
+#' @param filename The name of the output file
 #'   where the Matrix Market formatted data will be saved.  It is recommended to
 #'   use a filename ending with ".mtx" for clarity.
 #'
-#' @return This function has no return value. It writes a Matrix Market
-#'   formatted file to disk.
+#' @return A boolean indicating success or failure. Writes a MTX file to disk.
 #'
 #' @examples
 #' \dontrun{
@@ -130,13 +138,15 @@ NULL
 #' }
 #'
 #' @export
-write_fmm <- function(input, fname = "out.mtx") {
+write_fmm <- function(input, filename = "out.mtx") {
+  # Expand the ~ character to the full path
+  expanded_fname <- path.expand(filename)
   if (is.vector(input)) {
-    return(vec_to_fmm(input, fname)) # nolint. C++ function.
+    return(vec_to_fmm(input, expanded_fname)) # nolint. C++ function.
   } else if (is.matrix(input)) {
-    return(mat_to_fmm(input, fname)) # nolint. C++ function.
+    return(mat_to_fmm(input, expanded_fname)) # nolint. C++ function.
   } else if (inherits(input, "sparseMatrix")) {
-    return(sparse_to_fmm(input, fname)) # nolint. C++ function.
+    return(sparse_to_fmm(input, expanded_fname)) # nolint. C++ function.
   } else {
     stop(
       paste(

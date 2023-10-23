@@ -3,6 +3,9 @@
 \name{fmm_to_vec}
 \alias{fmm_to_vec}
 \title{Convert Matrix Market File to Numeric Vector}
+\usage{
+fmm_to_vec(filename)
+}
 \arguments{
 \item{filename}{The name of the input Matrix Market file to be read.}
 }

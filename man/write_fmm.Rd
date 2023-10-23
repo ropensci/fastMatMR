@@ -4,13 +4,13 @@
 \alias{write_fmm}
 \title{Convert Various Numeric Types to Matrix Market Format}
 \usage{
-write_fmm(input, fname = "out.mtx")
+write_fmm(input, filename = "out.mtx")
 }
 \arguments{
 \item{input}{A numeric object to be converted. This can be a numeric vector,
 a matrix, or a sparse matrix.}
 
-\item{fname}{The name of the output file
+\item{filename}{The name of the output file
 where the Matrix Market formatted data will be saved.  It is recommended to
 use a filename ending with ".mtx" for clarity.}
 }

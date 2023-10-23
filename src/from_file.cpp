@@ -8,20 +8,13 @@
 #include <vector>
 
 #include "cpp11.hpp"
+#include "helpers.hpp"
 
 #include "../inst/include/fast_matrix_market/fast_matrix_market.hpp"
 
 // TODO: Consider chunking
 
 namespace fmm = fast_matrix_market;
-
-bool is_matrix_loaded() {
-  SEXP matrixNamespace = R_FindNamespace(Rf_mkString("Matrix"));
-  if (matrixNamespace == R_UnboundValue) {
-    return false;
-  }
-  return true;
-}
 
 [[cpp11::register]] //
 cpp11::doubles

@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "cpp11.hpp"
+#include "helpers.hpp"
 
 #include "../inst/include/fast_matrix_market/fast_matrix_market.hpp"
 
@@ -91,6 +92,11 @@ bool intmat_to_fmm(cpp11::integers_matrix<> r_mat,
 
 [[cpp11::register]] //
 bool sparse_to_fmm(cpp11::sexp input, std::string filename) {
+  if (!is_matrix_loaded()) {
+    throw std::runtime_error(
+        "The 'Matrix' package cannot be loaded. Please install "
+        "it before using this function.");
+  }
   std::vector<int> i_vec, p_vec; // not set for diagonal sparse matrices
   std::vector<double> x_vec =
       cpp11::as_cpp<std::vector<double>>(input.attr("x"));

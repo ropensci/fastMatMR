@@ -15,6 +15,14 @@
 
 namespace fmm = fast_matrix_market;
 
+bool is_matrix_loaded() {
+  SEXP matrixNamespace = R_FindNamespace(Rf_mkString("Matrix"));
+  if (matrixNamespace == R_UnboundValue) {
+    return false;
+  }
+  return true;
+}
+
 [[cpp11::register]] //
 cpp11::doubles
 cpp_fmm_to_vec(const std::string &filename) {
@@ -62,6 +70,12 @@ cpp_fmm_to_mat(const std::string &filename) {
 [[cpp11::register]] //
 cpp11::sexp
 cpp_fmm_to_sparse_Matrix(const std::string &filename) {
+  // Check if the Matrix package is loaded
+  if (!is_matrix_loaded()) {
+    throw std::runtime_error(
+        "The 'Matrix' package cannot be loaded. Please install "
+        "it before using this function.");
+  }
   // TODO: Can speed this up by constructing from SEXP instead of via Matrix
   // constructor later
   using namespace cpp11::literals;

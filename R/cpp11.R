@@ -16,6 +16,10 @@ vec_to_fmm <- function(r_vec, filename) {
   .Call(`_fastMatMR_vec_to_fmm`, r_vec, filename)
 }
 
+intvec_to_fmm <- function(r_vec, filename) {
+  .Call(`_fastMatMR_intvec_to_fmm`, r_vec, filename)
+}
+
 mat_to_fmm <- function(r_mat, filename) {
   .Call(`_fastMatMR_mat_to_fmm`, r_mat, filename)
 }

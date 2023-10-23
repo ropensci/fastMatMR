@@ -10,8 +10,7 @@
 data will be saved.}
 }
 \value{
-This function has no return value. It writes a Matrix Market
-formatted file to disk.
+A boolean indicating success or failure. Writes a MTX file to disk.
 }
 \description{
 This function takes a numeric matrix and converts it into a

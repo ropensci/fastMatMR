@@ -3,6 +3,7 @@
 export(fmm_to_mat)
 export(fmm_to_sparse_Matrix)
 export(fmm_to_vec)
+export(intvec_to_fmm)
 export(mat_to_fmm)
 export(sparse_to_fmm)
 export(vec_to_fmm)

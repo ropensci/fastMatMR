@@ -75,6 +75,23 @@ fmm_to_sparse_Matrix <- function(filename) {
 #' }
 NULL
 
+#' @export intvec_to_fmm
+#' @rdname intvec_to_fmm
+#' @name intvec_to_fmm
+#' @title Convert a numeric integer vector to Matrix Market Format
+#' @description This function takes a numeric intvector and converts it into a
+#'   Matrix Market output file.
+#' @param input A numeric integer vector to be converted.
+#' @param filename The name of the output file where the Matrix Market formatted
+#'   data will be saved.
+#' @return A boolean indicating success or failure. Writes a MTX file to disk.
+#' @examples
+#' \dontrun{
+#' intvec <- c(1, 2, 3)
+#' intvec_to_fmm(intvec, "intvector.mtx")
+#' }
+NULL
+
 #' @export mat_to_fmm
 #' @rdname mat_to_fmm
 #' @name mat_to_fmm
@@ -142,7 +159,11 @@ write_fmm <- function(input, filename = "out.mtx") {
   # Expand the ~ character to the full path
   expanded_fname <- path.expand(filename)
   if (is.vector(input)) {
-    return(vec_to_fmm(input, expanded_fname)) # nolint. C++ function.
+    if (is.integer(input)) {
+      return(intvec_to_fmm(input, expanded_fname)) # nolint. C++ function.
+    } else {
+      return(vec_to_fmm(input, expanded_fname)) # nolint. C++ function.
+    }
   } else if (is.matrix(input)) {
     return(mat_to_fmm(input, expanded_fname)) # nolint. C++ function.
   } else if (inherits(input, "sparseMatrix")) {
@@ -151,7 +172,7 @@ write_fmm <- function(input, filename = "out.mtx") {
     stop(
       paste(
         "Unsupported input type.",
-        "Accepted types are numeric vector, matrix, and sparseMatrix."
+        "Accepted types are numeric vector, integer vector, matrix, and sparseMatrix."
       )
     )
   }

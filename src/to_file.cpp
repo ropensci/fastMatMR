@@ -28,6 +28,22 @@ bool vec_to_fmm(cpp11::doubles r_vec, std::string filename) {
 }
 
 [[cpp11::register]] //
+bool intvec_to_fmm(cpp11::integers r_vec, std::string filename) {
+  std::string mm;
+  std::vector<int> std_vec(r_vec.size());
+  std::copy(r_vec.begin(), r_vec.end(), std_vec.begin());
+  fmm::matrix_market_header header(1, std_vec.size());
+  std::filesystem::path file_path(filename);
+  std::ofstream os(file_path);
+  if (!os.is_open()) {
+    return false;
+  }
+  fmm::write_matrix_market_array(os, header, std_vec);
+  os.close();
+  return true;
+}
+
+[[cpp11::register]] //
 bool mat_to_fmm(cpp11::doubles_matrix<> r_mat,
                std::string filename) {
   // Get matrix dimensions

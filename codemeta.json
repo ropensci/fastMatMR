@@ -7,7 +7,7 @@
   "codeRepository": "https://github.com/HaoZeke/fastMatMR",
   "issueTracker": "https://github.com/HaoZeke/fastMatMR/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.0.0.0",
+  "version": "1.1.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -110,10 +110,15 @@
   "softwareRequirements": {
     "SystemRequirements": "C++17"
   },
-  "fileSize": "34263.376KB",
+  "fileSize": "46543.405KB",
   "releaseNotes": "https://github.com/HaoZeke/fastMatMR/blob/master/NEWS.md",
   "readme": "https://github.com/HaoZeke/fastMatMR/blob/main/README.md",
   "contIntegration": ["https://github.com/HaoZeke/fastMatMR/actions/workflows/R-CMD-check.yaml", "https://github.com/HaoZeke/fastMatMR/actions?query=workflow%3Apkgcheck"],
   "developmentStatus": "https://lifecycle.r-lib.org/articles/stages.html#stable",
+  "review": {
+    "@type": "Review",
+    "url": "https://github.com/ropensci/software-review/issues/606",
+    "provider": "https://ropensci.org"
+  },
   "keywords": ["cpp17", "matrix-market", "matrix-market-format", "r-package", "r-cpp11"]
 }

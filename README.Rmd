@@ -17,7 +17,7 @@ output: github_document
 `fastMatMR` provides R bindings for reading and writing to [Matrix Market
 files](https://math.nist.gov/MatrixMarket/formats.html) using the
 high-performance [fast_matrix_market C++
-library](https://github.com/alugowski/fast_matrix_market) (version 1.7.2).
+library](https://github.com/alugowski/fast_matrix_market) (version 1.7.4).
 
 ## Why?
 

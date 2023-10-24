@@ -18,7 +18,7 @@ Review](https://badges.ropensci.org/606_status.svg)](https://github.com/ropensci
 Market files](https://math.nist.gov/MatrixMarket/formats.html) using the
 high-performance [fast_matrix_market C++
 library](https://github.com/alugowski/fast_matrix_market) (version
-1.7.2).
+1.7.4).
 
 ## Why?
 

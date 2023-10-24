@@ -161,13 +161,14 @@ NULL
 #' \dontrun{
 #' vec <- c(1, 2, 3)
 #' mat <- matrix(c(1, 2, 3, 4), nrow = 2)
-#' sparse_mat <- Matrix::Matrix(c(1, 0, 0, 2), nrow = 2, sparse = TRUE)
+#' sparse_mat_diag <- Matrix::Matrix(c(1, 0, 0, 2), nrow = 2, sparse = TRUE)
 #' ## Diagonal ^-
 #' sparse_mat <- Matrix::Matrix(c(1, 1, 0, 2), nrow = 2, sparse = TRUE)
 #' ## And not diagonal -^
 #'
 #' write_fmm(vec, "vector.mtx")
 #' write_fmm(mat, "matrix.mtx")
+#' write_fmm(sparse_mat_diag, "sparse_mat_diag.mtx")
 #' write_fmm(sparse_mat, "sparse_matrix.mtx")
 #' }
 #'

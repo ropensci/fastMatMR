@@ -93,7 +93,7 @@ and minor ones can be added to `newsfragments`.
 Benchmark vignettes are pre-computed via:
 
 ```bash
-Rscript rebuild-benchmarks.R
+Rscript tools/rebuild-benchmarks.R
 ```
 
 Which makes it faster to build the package and run checks.

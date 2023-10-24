@@ -20,3 +20,4 @@
 ^tbump\.toml$
 ^CITATION\.cff$
 ^CODEOWNERS$
+^tools$

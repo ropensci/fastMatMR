@@ -1,4 +1,4 @@
-name: pre-commit
+name: Non-R Style Checks
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref }}

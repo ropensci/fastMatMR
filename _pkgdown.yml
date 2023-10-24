@@ -6,3 +6,9 @@ template:
 authors:
   Rohit Goswami:
     href: https://rgoswami.me
+
+# Use library(pkgdown) and then
+# template_navbar(path = ".")
+# template_reference(path = ".")
+# template_articles(path = ".")
+# to customize

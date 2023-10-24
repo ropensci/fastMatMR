@@ -1,10 +1,10 @@
 ---
-title: "Getting Started with fastMatMR"
+title: "Getting Started"
 author: "Rohit Goswami"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Getting Started with fastMatMR}
+  %\VignetteIndexEntry{Getting Started}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

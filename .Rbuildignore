@@ -5,8 +5,8 @@
 ^README\.Rmd$
 ^\.github$
 ^\.pre-commit-config.yaml$
-^\.pixi\.toml$
-^\.pixi\.lock$
+^pixi\.toml$
+^pixi\.lock$
 ^CODE_OF_CONDUCT\.md$
 ^CONTRIBUTING\.md$
 ^newsfragments$

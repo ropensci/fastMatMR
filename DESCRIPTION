@@ -2,8 +2,12 @@ Package: fastMatMR
 Title: "fastMatMR: High-Performance Matrix Market File Operations in R"
 Version: 1.1.0
 Authors@R:
-    person("Rohit", "Goswami", , "rgoswami@ieee.org", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0002-2393-8056"))
+    c(
+    person("Rohit", "Goswami", email = "rgoswami@ieee.org", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-2393-8056")),
+    person("Ildiko", "Czeller", email = "czeildi@users.noreply.github.com", role = c("rev"),
+           comment = c(ORCID = "0000-0002-9418-4589"))
+           )
 Description: "fastMatMR is an R package offering high-performance read and write operations for Matrix Market files. It acts as a thin wrapper around the 'fast_matrix_market' C++ library, offering speed and extended support for Matrix Market formats. Unlike other R packages, fastMatMR supports not just sparse matrices but also dense vectors and matrices. This makes it a versatile choice for dealing with .mtx files in R."
 License: MIT + file LICENSE
 SystemRequirements: C++17

@@ -4,6 +4,6 @@ authors:
   - family-names: Goswami
     given-names: Rohit
     orcid: https://orcid.org/0000-0002-2393-8056
-title: HaoZeke/fastMatMR: v0.0.1.0: `fastMatMR` Writer
+title: ropensci/fastMatMR: v0.0.1.0: `fastMatMR` Writer
 version: v0.0.1.0
 date-released: 2023-08-31

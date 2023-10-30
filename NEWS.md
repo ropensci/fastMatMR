@@ -4,19 +4,19 @@
 
 ## Features
 
-- Handle paths with `~` ([#24](https://github.com/HaoZeke/fastMatMR/issues/24))
-- Integrated support to handle integers in input files. ([#25](https://github.com/HaoZeke/fastMatMR/issues/25))
-- Added support for handling `.mtx.gz` file formats. ([#28](https://github.com/HaoZeke/fastMatMR/issues/28))
+- Handle paths with `~` ([#24](https://github.com/ropensci/fastMatMR/issues/24))
+- Integrated support to handle integers in input files. ([#25](https://github.com/ropensci/fastMatMR/issues/25))
+- Added support for handling `.mtx.gz` file formats. ([#28](https://github.com/ropensci/fastMatMR/issues/28))
 - Updated `fast_matrix_market` to `1.7.4`
 
 ## Bug Fixes
 
-- Improved error messages distinguishing between sparse and non-sparse matrices. ([#26](https://github.com/HaoZeke/fastMatMR/issues/26))
-- Enhanced error messages for `sparse_to_fmm` function. ([#27](https://github.com/HaoZeke/fastMatMR/issues/27))
+- Improved error messages distinguishing between sparse and non-sparse matrices. ([#26](https://github.com/ropensci/fastMatMR/issues/26))
+- Enhanced error messages for `sparse_to_fmm` function. ([#27](https://github.com/ropensci/fastMatMR/issues/27))
 
 ## Breaking changes
 
-- Streamlined function naming for better clarity. ([#29](https://github.com/HaoZeke/fastMatMR/issues/29))
+- Streamlined function naming for better clarity. ([#29](https://github.com/ropensci/fastMatMR/issues/29))
 
 User facing functionality is not affected, `write_fmm` still works.
 

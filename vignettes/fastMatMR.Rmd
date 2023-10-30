@@ -43,7 +43,7 @@ To install the development version of `fastMatMR` from GitHub:
 
 ```{r, eval=FALSE}
 install.packages("devtools")
-devtools::install_github("HaoZeke/fastMatMR")
+devtools::install_github("ropensci/fastMatMR")
 ```
 
 # Basic Usage

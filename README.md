@@ -3,8 +3,8 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/HaoZeke/fastMatMR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/HaoZeke/fastMatMR/actions/workflows/R-CMD-check.yaml)
-[![pkgcheck](https://github.com/HaoZeke/fastMatMR/workflows/pkgcheck/badge.svg)](https://github.com/HaoZeke/fastMatMR/actions?query=workflow%3Apkgcheck)
+[![R-CMD-check](https://github.com/ropensci/fastMatMR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/fastMatMR/actions/workflows/R-CMD-check.yaml)
+[![pkgcheck](https://github.com/ropensci/fastMatMR/workflows/pkgcheck/badge.svg)](https://github.com/ropensci/fastMatMR/actions?query=workflow%3Apkgcheck)
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![DOI](https://zenodo.org/badge/685246044.svg)](https://zenodo.org/badge/latestdoi/685246044)
@@ -56,9 +56,9 @@ Compiler](http://tensor-compiler.org/docs/tensors.html) (TACO).
   numbers.
 
 We have vignettes for both
-[read](https://haozeke.github.io/fastMatMR/articles/fmm_read_bench.html)
+[read](https://ropensci.github.io/fastMatMR/articles/fmm_read_bench.html)
 and
-[write](https://haozeke.github.io/fastMatMR/articles/fmm_write_bench.html)
+[write](https://ropensci.github.io/fastMatMR/articles/fmm_write_bench.html)
 operations to demonstrate the performance claims.
 
 #### Alternatives and statement of need
@@ -78,7 +78,7 @@ You can install the development version of `fastMatMR` from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("HaoZeke/fastMatMR")
+devtools::install_github("ropensci/fastMatMR")
 ```
 
 ## Quick Example
@@ -103,13 +103,19 @@ array([[1., 3.],
 ```
 
 Similarly, `fastMatMR` supports writing and reading from other `R`
-objects (e.g. standard R vectors and matrices), as seen in the [basic
-use
-vignette](https://haozeke.github.io/fastMatMR/articles/basic_usage.html).
+objects (e.g. standard R vectors and matrices), as seen in the [getting
+started
+vignette](https://ropensci.github.io/fastMatMR/articles/basic_usage.html).
+
+## Contributing
+
+Contributions are very welcome. Please see the [Contribution
+Guide](CONTRIBUTING.md) and our [Code of
+Conduct](https://ropensci.org/code-of-conduct/).
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](LICENSE.md).
 
 ### Logo
 

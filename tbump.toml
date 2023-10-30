@@ -1,5 +1,5 @@
 # Uncomment this if your project is hosted on GitHub:
-github_url = "https://github.com/HaoZeke/fastMatMR/"
+github_url = "https://github.com/ropensci/fastMatMR/"
 
 [version]
 current = "1.0.0.0"

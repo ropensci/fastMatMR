@@ -77,6 +77,13 @@ You can install the development version of `fastMatMR` from
 [GitHub](https://github.com/) with:
 
 ``` r
+install.packages("fastMatMR",
+                 repos = "https://ropensci.r-universe.dev")
+```
+
+For the development release, one can use:
+
+``` r
 # install.packages("devtools")
 devtools::install_github("ropensci/fastMatMR")
 ```

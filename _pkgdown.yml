@@ -1,8 +1,4 @@
-url: ~
-template:
-  bootstrap: 5
-  bootswatch: lumen
-
+url: https://docs.ropensci.org/fastMatMR/
 authors:
   Rohit Goswami:
     href: https://rgoswami.me

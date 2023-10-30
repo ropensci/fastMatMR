@@ -33,3 +33,4 @@
 ^\.git$
 ^fastMatMR.Rcheck$
 ^.*\.mtx$
+^cran-comments\.md$

@@ -21,3 +21,14 @@
 ^CITATION\.cff$
 ^CODEOWNERS$
 ^tools$
+^\.covrignore$
+^\.gitattributes$
+^\.github$
+^\.github\/\.gitignore$
+^\.gitignore$
+^\.pre-commit-config.yaml$
+^renv\/\.gitignore$
+^vignettes\/\.gitignore$
+^\.\.Rcheck$
+^\.git$
+^fastMatMR.Rcheck$

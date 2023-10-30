@@ -5,7 +5,7 @@ interest in making this project better.
 
 ## Code of Conduct
 
-Please read and adhere to our [Code of Conduct](CODE_OF_CONDUCT.md) to maintain
+Please read and adhere to our [Code of Conduct](https://ropensci.org/code-of-conduct/) to maintain
 a safe, welcoming, and inclusive environment.
 
 ## Types of Contributions

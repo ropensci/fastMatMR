@@ -32,3 +32,4 @@
 ^\.\.Rcheck$
 ^\.git$
 ^fastMatMR.Rcheck$
+^.*\.mtx$

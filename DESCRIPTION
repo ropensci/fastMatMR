@@ -1,5 +1,5 @@
 Package: fastMatMR
-Title: "fastMatMR: High-Performance Matrix Market File Operations in R"
+Title: "fastMatMR: High-Performance Matrix Market File Operations"
 Version: 1.1.0
 Authors@R:
     c(

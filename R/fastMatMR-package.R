@@ -194,7 +194,8 @@ write_fmm <- function(input, filename = "out.mtx") {
     stop(
       paste(
         "Unsupported input type.",
-        "Accepted types are numeric vector, integer vector, matrix, and sparseMatrix."
+        "Accepted types are numeric vector,",
+        " integer vector, matrix, and sparseMatrix."
       )
     )
   }

@@ -93,7 +93,7 @@ NULL
 #'   data will be saved.
 #' @return A boolean indicating success or failure. Writes a MTX file to disk.
 #' @examples
-#' intvec <- c(1, 2, 3)
+#' intvec <- c(1L, 2L, 3L)
 #' intvec_to_fmm(intvec, tempfile(fileext = ".mtx"))
 NULL
 

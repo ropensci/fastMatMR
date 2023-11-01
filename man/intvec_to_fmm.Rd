@@ -17,6 +17,6 @@ This function takes a numeric intvector and converts it into a
 Matrix Market output file.
 }
 \examples{
-intvec <- c(1, 2, 3)
+intvec <- c(1L, 2L, 3L)
 intvec_to_fmm(intvec, tempfile(fileext = ".mtx"))
 }

@@ -112,11 +112,13 @@ vignette](https://docs.ropensci.org/fastMatMR/articles/fastMatMR.html).
 
 ## Contributing
 
-Contributions are very welcome. Please see the [Contribution Guide](CONTRIBUTING.md) and our [Code of Conduct](https://ropensci.org/code-of-conduct/).
+Contributions are very welcome. Please see the [Contribution
+Guide](https://docs.ropensci.org/fastMatMR/CONTRIBUTING.html) and our [Code of
+Conduct](https://ropensci.org/code-of-conduct/).
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE.md).
+This project is licensed under the [MIT License](https://docs.ropensci.org/fastMatMR/LICENSE.html).
 
 ### Logo
 

@@ -23,8 +23,10 @@ of Matrix Market files. It wraps around the [fast_matrix_market C++
 library](https://github.com/alugowski/fast_matrix_market), ensuring optimal
 performance.
 
-Performance vignettes for [write](vignette("fmm_write_bench")) and
-[read](vignette("fmm_read_bench")) operations are also provided.
+Performance vignettes for
+[write](https://docs.ropensci.org/fastMatMR/articles/fmm_write_bench.html) and
+[read](https://docs.ropensci.org/fastMatMR/articles/fmm_read_bench.html)
+operations are also provided.
 
 
 ## Unique Features

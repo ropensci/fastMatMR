@@ -2,8 +2,9 @@
 
 # fastMatMR 1.2.3 (2023-11-01)
 
-- Same as previous version.
+## Changes
 
+- Reworked getting started vignette to use temporary files
 
 # fastMatMR 1.2.2 (2023-11-01)
 
@@ -16,11 +17,10 @@
 
 # fastMatMR 1.2.1 (2023-11-01)
 
+## Changes
+
 - Fixed dead URLs in README
-
-# fastMatMR 1.2.0 (2023-11-01)
-
-- First CRAN release.
+- First CRAN compatible release attempt.
 
 # fastMatMR 1.1.0 (2023-10-24)
 

@@ -1,5 +1,5 @@
 Package: fastMatMR
-Title: "fastMatMR: High-Performance Matrix Market File Operations"
+Title: "High-Performance Matrix Market File Operations"
 Version: 1.2.1
 Authors@R:
     c(
@@ -10,7 +10,7 @@ Authors@R:
     person("Adam", "Lugowski", email = "alugowski@gmail.com", role = c("ctb"),
            comment = c(ORCID = "0009-0004-0922-4067"))
            )
-Description: "An interface to the 'fast_matrix_market' C++ library, this package offers efficient read and write operations for Matrix Market files in R. It supports both sparse and dense matrix formats."
+Description: "An interface to the 'fast_matrix_market' 'C++' library, this package offers efficient read and write operations for Matrix Market files in R. It supports both sparse and dense matrix formats. Peer-reviewed at ROpenSci (<https://github.com/ropensci/software-review/issues/606>)."
 Author: Rohit Goswami [aut, cre] (<https://orcid.org/0000-0002-2393-8056>),
         Ildiko Czeller [rev] (<https://orcid.org/0000-0002-9418-4589>),
         Adam Lugowski [ctb] (<https://orcid.org/0009-0004-0922-4067>)

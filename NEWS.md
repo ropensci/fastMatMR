@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# fastMatMR 1.2.0 (2023-11-01)
+
+- First CRAN release.
+
 # fastMatMR 1.1.0 (2023-10-24)
 
 ## Features

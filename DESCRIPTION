@@ -1,6 +1,6 @@
 Package: fastMatMR
 Title: "fastMatMR: High-Performance Matrix Market File Operations"
-Version: 1.1.0
+Version: 1.2.0
 Authors@R:
     c(
     person("Rohit", "Goswami", email = "rgoswami@ieee.org", role = c("aut", "cre"),

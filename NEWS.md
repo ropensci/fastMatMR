@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# fastMatMR 1.2.2 (2023-11-01)
+
+## Changes
+
+- Revised the package DESCRIPTION to adhere to CRAN guidelines.
+- Updated examples for several functions to be self-contained and CRAN compliant.
+
 # fastMatMR 1.2.1 (2023-11-01)
 
 - Fixed dead URLs in README

@@ -12,9 +12,12 @@
 #' @return A numeric vector containing the data read from the Matrix Market
 #'   file.
 #' @examples
-#' \dontrun{
-#' vec <- fmm_to_vec("matrix.mtx")
-#' }
+#' # Create
+#' sample_vec <- c(1, 2, 3)
+#' temp_file_vec <- tempfile(fileext = ".mtx")
+#' write_fmm(sample_vec, temp_file_vec)
+#' # Read
+#' vec <- fmm_to_vec(temp_file_vec)
 fmm_to_vec <- function(filename) {
   expanded_filename <- path.expand(filename)
   result <- cpp_fmm_to_vec(expanded_filename)
@@ -30,9 +33,12 @@ fmm_to_vec <- function(filename) {
 #' @param filename The name of the input Matrix Market file to be read.
 #' @return A matrix containing the data read from the Matrix Market file.
 #' @examples
-#' \dontrun{
-#' mat <- fmm_to_mat("matrix.mtx")
-#' }
+#' # Create
+#' sample_mat <- matrix(c(1, 2, 3, 4), nrow = 2)
+#' temp_file_mat <- tempfile(fileext = ".mtx")
+#' write_fmm(sample_mat, temp_file_mat)
+#' # Read
+#' mat <- fmm_to_mat(temp_file_mat)
 fmm_to_mat <- function(filename) {
   expanded_filename <- path.expand(filename)
   result <- cpp_fmm_to_mat(expanded_filename)
@@ -49,9 +55,12 @@ fmm_to_mat <- function(filename) {
 #' @return A dgCMatrix object containing the data read from the Matrix Market
 #'   file.
 #' @examples
-#' \dontrun{
-#' sparse_mat <- fmm_to_sparse_Matrix("sparse_matrix.mtx")
-#' }
+#' # Create
+#' sample_sparse_mat <- Matrix::Matrix(c(1, 0, 0, 2), nrow = 2, sparse = TRUE)
+#' temp_file <- tempfile(fileext = ".mtx")
+#' write_fmm(sample_sparse_mat, temp_file)
+#' # Read
+#' sparse_mat <- fmm_to_sparse_Matrix(temp_file)
 fmm_to_sparse_Matrix <- function(filename) {
   expanded_filename <- path.expand(filename)
   result <- cpp_fmm_to_sparse_Matrix(expanded_filename)
@@ -69,10 +78,8 @@ fmm_to_sparse_Matrix <- function(filename) {
 #'   data will be saved.
 #' @return A boolean indicating success or failure. Writes a MTX file to disk.
 #' @examples
-#' \dontrun{
 #' vec <- c(1, 2, 3)
-#' vec_to_fmm(vec, "vector.mtx")
-#' }
+#' vec_to_fmm(vec, tempfile(fileext = ".mtx"))
 NULL
 
 #' @export intvec_to_fmm
@@ -86,10 +93,8 @@ NULL
 #'   data will be saved.
 #' @return A boolean indicating success or failure. Writes a MTX file to disk.
 #' @examples
-#' \dontrun{
 #' intvec <- c(1, 2, 3)
-#' intvec_to_fmm(intvec, "intvector.mtx")
-#' }
+#' intvec_to_fmm(intvec, tempfile(fileext = ".mtx"))
 NULL
 
 #' @export mat_to_fmm
@@ -103,10 +108,8 @@ NULL
 #'   data will be saved.
 #' @return A boolean indicating success or failure. Writes a MTX file to disk.
 #' @examples
-#' \dontrun{
 #' mat <- matrix(c(1, 2, 3, 4), nrow = 2)
-#' mat_to_fmm(mat, "matrix.mtx")
-#' }
+#' mat_to_fmm(mat, tempfile(fileext = ".mtx"))
 NULL
 
 #' @export intmat_to_fmm
@@ -120,10 +123,8 @@ NULL
 #'   data will be saved.
 #' @return A boolean indicating success or failure. Writes a MTX file to disk.
 #' @examples
-#' \dontrun{
 #' intmat <- matrix(c(1L, 2L, 3L, 4L), nrow = 2)
-#' intmat_to_fmm(intmat, "intmatrix.mtx")
-#' }
+#' intmat_to_fmm(intmat, tempfile(fileext = ".mtx"))
 NULL
 
 #' @export sparse_Matrix_to_fmm
@@ -137,10 +138,8 @@ NULL
 #'   data will be saved.
 #' @return A boolean indicating success or failure. Writes a MTX file to disk.
 #' @examples
-#' \dontrun{
 #' sparse_mat <- Matrix::Matrix(c(1, 0, 0, 2), nrow = 2, sparse = TRUE)
-#' sparse_Matrix_to_fmm(sparse_mat, "sparse_matrix.mtx")
-#' }
+#' sparse_Matrix_to_fmm(sparse_mat, tempfile(fileext = ".mtx"))
 NULL
 
 #' Convert Various Numeric Types to Matrix Market Format
@@ -158,19 +157,16 @@ NULL
 #' @return A boolean indicating success or failure. Writes a MTX file to disk.
 #'
 #' @examples
-#' \dontrun{
 #' vec <- c(1, 2, 3)
 #' mat <- matrix(c(1, 2, 3, 4), nrow = 2)
 #' sparse_mat_diag <- Matrix::Matrix(c(1, 0, 0, 2), nrow = 2, sparse = TRUE)
 #' ## Diagonal ^-
 #' sparse_mat <- Matrix::Matrix(c(1, 1, 0, 2), nrow = 2, sparse = TRUE)
 #' ## And not diagonal -^
-#'
-#' write_fmm(vec, "vector.mtx")
-#' write_fmm(mat, "matrix.mtx")
-#' write_fmm(sparse_mat_diag, "sparse_mat_diag.mtx")
-#' write_fmm(sparse_mat, "sparse_matrix.mtx")
-#' }
+#' write_fmm(vec, tempfile(fileext = ".mtx"))
+#' write_fmm(mat, tempfile(fileext = ".mtx"))
+#' write_fmm(sparse_mat_diag, tempfile(fileext = ".mtx"))
+#' write_fmm(sparse_mat, tempfile(fileext = ".mtx"))
 #'
 #' @export
 write_fmm <- function(input, filename = "out.mtx") {

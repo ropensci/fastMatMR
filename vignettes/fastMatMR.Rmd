@@ -67,21 +67,24 @@ library(fastMatMR)
 
 ```{r}
 vec <- c(1, 2, 3)
-write_fmm(vec, "vector.mtx")
+temp_file_vec <- tempfile(fileext = ".mtx")
+write_fmm(vec, temp_file_vec)
 ```
 
 ### With Dense Matrices
 
 ```{r}
 mat <- matrix(c(1, 2, 3, 4), nrow = 2)
-write_fmm(mat, "matrix.mtx")
+temp_file_mat <- tempfile(fileext = ".mtx")
+write_fmm(mat, temp_file_mat)
 ```
 
 ### With Sparse Matrices
 
 ```{r}
 sp_mat <- Matrix::sparseMatrix(i = c(1, 3), j = c(2, 4), x = 7:8)
-write_fmm(sp_mat, "sparse.mtx")
+temp_file_sp_mat <- tempfile(fileext = ".mtx")
+write_fmm(sp_mat, temp_file_sp_mat)
 ```
 
 ## Reading Matrix Market files
@@ -93,8 +96,9 @@ write_fmm(sp_mat, "sparse.mtx")
 
 ```{r}
 vec <- c(1, 2, 3.32, 225.61)
-vec_to_fmm(vec, "vector.mtx")
-fmm_to_vec("vector.mtx")
+temp_file_vec_r <- tempfile(fileext = ".mtx")
+vec_to_fmm(vec, temp_file_vec_r)
+fmm_to_vec(temp_file_vec_r)
 ```
 
 Similarly, other `fmm_to_` functions can be used to read from `.mtx` files.
@@ -107,8 +111,9 @@ Sparse matrices can be written and read by the `Matrix` library:
 
 ```{r}
 spmat <- Matrix::Matrix(c(1, 0, 3, NA), nrow = 2, sparse = TRUE)
-Matrix::writeMM(spmat, "sparse_na.mtx")
-Matrix::readMM("sparse_na.mtx")
+temp_file_sp_na <- tempfile(fileext = ".mtx")
+Matrix::writeMM(spmat, temp_file_sp_na)
+Matrix::readMM(temp_file_sp_na)
 ```
 
 However, as can be seen above, `NA` values are handled incorrectly, and dense
@@ -118,9 +123,10 @@ matrices or vectors cannot be read or written in the matrix market format by the
 
 ### Reading Back In Python
 
-Since the Matrix Market format is language agnostic, the `.mtx` files produced can even be read into Python:
+Since the Matrix Market format is language agnostic, the `.mtx` files produced
+can even be read into Python:
 
-```bash
+```{bash, eval=FALSE}
 pip install fast_matrix_market
 python -c 'import fast_matrix_market as fmm; print(fmm.read_array_or_coo("sparse.mtx"))'
 ```

@@ -119,3 +119,5 @@ rsconnect/
 *.app
 inst/doc
 docs
+/doc/
+/Meta/

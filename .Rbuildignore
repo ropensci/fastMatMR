@@ -34,3 +34,4 @@
 ^fastMatMR.Rcheck$
 ^.*\.mtx$
 ^cran-comments\.md$
+^CRAN-SUBMISSION$

@@ -97,3 +97,56 @@ Rscript tools/rebuild-benchmarks.R
 ```
 
 Which makes it faster to build the package and run checks.
+
+
+## CRAN Submission and Updates
+
+Before submitting or updating the package on CRAN, follow these steps to ensure a smooth submission process:
+
+1. **Document changes**:
+   - Update any relevant documentation.
+     ```r
+     devtools::document()
+     ```
+
+2. **Recreate the `readme` file**:
+   - Ensure the README is up-to-date with the latest changes.
+     ```r
+     devtools::build_readme()
+     ```
+
+3. **Check the package**:
+   - This runs various checks to make sure the package is CRAN-ready.
+     ```r
+     devtools::check()
+     ```
+
+4. **Test on various platforms**:
+   - Before submission, it's beneficial to test your package on different platforms.
+     ```r
+     rhub::check_for_cran()   # Tests on multiple platforms
+     devtools::check_win_devel()  # Specifically for Windows
+     ```
+
+5. **Adhere to best practices**:
+   - Using the `goodpractice` package can help ensure you're following best practices for R package development.
+     ```r
+     goodpractice::gp()
+     ```
+
+6. **Bump the package version**:
+   - Depending on the extent and nature of changes, adjust the version of your package. Remember semantic versioning conventions.
+     ```r
+     # Use "major", "minor", or "patch" based on the changes
+     fledge::bump_version("patch")
+     ```
+
+7. **Submit to CRAN**:
+   - Once all checks pass and you've ensured the quality of your package, it's time to submit.
+     ```r
+     devtools::release()
+     ```
+
+For more detailed information on the CRAN submission and update process, refer to the following resources:
+- [Releasing a package](https://r-pkgs.org/release.html#sec-release-process)
+- [How to Develop an R Package and Submit to CRAN (Mannheim University)](https://www.mzes.uni-mannheim.de/socialsciencedatalab/article/r-package/)

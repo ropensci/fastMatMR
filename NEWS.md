@@ -7,6 +7,7 @@
 - Revised the package DESCRIPTION to adhere to CRAN guidelines.
 - Updated examples for several functions to be self-contained and CRAN compliant.
 - Enabled examples within the documentation
+- Added documentation for releases
 
 # fastMatMR 1.2.1 (2023-11-01)
 

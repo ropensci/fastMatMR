@@ -54,8 +54,8 @@ Algebra Compiler](http://tensor-compiler.org/docs/tensors.html) (TACO).
   works by coercing to `NaN` instead of to arbitrarily high numbers.
 
 We have vignettes for both
-[read](https://docs.ropensci.org/fastMatMR/fastMatMR/articles/fmm_read_bench.html) and
-[write](https://docs.ropensci.org/fastMatMR/fastMatMR/articles/fmm_write_bench.html)
+[read](https://docs.ropensci.org/fastMatMR/articles/fmm_read_bench.html) and
+[write](https://docs.ropensci.org/fastMatMR/articles/fmm_write_bench.html)
 operations to demonstrate the performance claims.
 
 #### Alternatives and statement of need
@@ -108,7 +108,7 @@ array([[1., 3.],
 
 Similarly, `fastMatMR` supports writing and reading from other `R` objects (e.g.
 standard R vectors and matrices), as seen in the [getting started
-vignette](https://docs.ropensci.org/fastMatMR/fastMatMR/articles/basic_usage.html).
+vignette](https://docs.ropensci.org/fastMatMR/articles/fastMatMR.html).
 
 ## Contributing
 

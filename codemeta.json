@@ -3,7 +3,7 @@
   "@type": "SoftwareSourceCode",
   "identifier": "fastMatMR",
   "description": "\"fastMatMR is an R package offering high-performance read and write operations for Matrix Market files. It acts as a thin wrapper around the 'fast_matrix_market' C++ library, offering speed and extended support for Matrix Market formats. Unlike other R packages, fastMatMR supports not just sparse matrices but also dense vectors and matrices. This makes it a versatile choice for dealing with .mtx files in R.\"",
-  "name": "fastMatMR: \"fastMatMR: High-Performance Matrix Market File Operations in R\"",
+  "name": "fastMatMR: \"fastMatMR: High-Performance Matrix Market File Operations\"",
   "codeRepository": "https://github.com/ropensci/fastMatMR",
   "issueTracker": "https://github.com/ropensci/fastMatMR/issues",
   "license": "https://spdx.org/licenses/MIT",
@@ -21,6 +21,15 @@
       "familyName": "Goswami",
       "email": "rgoswami@ieee.org",
       "@id": "https://orcid.org/0000-0002-2393-8056"
+    }
+  ],
+  "contributor": [
+    {
+      "@type": "Person",
+      "givenName": "Adam",
+      "familyName": "Lugowski",
+      "email": "alugowski@gmail.com",
+      "@id": "https://orcid.org/0009-0004-0922-4067"
     }
   ],
   "maintainer": [
@@ -110,7 +119,7 @@
   "softwareRequirements": {
     "SystemRequirements": "C++17"
   },
-  "fileSize": "46543.405KB",
+  "fileSize": "25945.604KB",
   "releaseNotes": "https://github.com/ropensci/fastMatMR/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/fastMatMR/blob/main/README.md",
   "contIntegration": ["https://github.com/ropensci/fastMatMR/actions/workflows/R-CMD-check.yaml", "https://github.com/ropensci/fastMatMR/actions?query=workflow%3Apkgcheck"],

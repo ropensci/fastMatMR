@@ -37,7 +37,12 @@ for:
 - **Dense Vectors**: Writing standard R vectors to `.mtx` files.
 - **Dense Matrices**: Writing standard R matrices to `.mtx` files.
 - **Sparse Matrices**: A more efficient way of reading and writing sparse
-  matrices. For performance benchmarks, see performance our vignettes for [write](vignette("fmm_write_bench")) and [read](vignette("fmm_read_bench")) operations.
+  matrices.
+  
+For performance benchmarks, see performance our vignettes for
+[write](https://docs.ropensci.org/fastMatMR/articles/fmm_write_bench.html) and
+[read](https://docs.ropensci.org/fastMatMR/articles/fmm_read_bench.html)
+operations.
 
 # Installation
 

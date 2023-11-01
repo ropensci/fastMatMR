@@ -17,8 +17,6 @@ This function takes a numeric intvector and converts it into a
 Matrix Market output file.
 }
 \examples{
-\dontrun{
 intvec <- c(1, 2, 3)
-intvec_to_fmm(intvec, "intvector.mtx")
-}
+intvec_to_fmm(intvec, tempfile(fileext = ".mtx"))
 }

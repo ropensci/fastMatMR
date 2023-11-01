@@ -18,7 +18,10 @@ This function reads a Matrix Market file and converts it to a
 numeric vector in R.
 }
 \examples{
-\dontrun{
-vec <- fmm_to_vec("matrix.mtx")
-}
+# Create
+sample_vec <- c(1, 2, 3)
+temp_file_vec <- tempfile(fileext = ".mtx")
+write_fmm(sample_vec, temp_file_vec)
+# Read
+vec <- fmm_to_vec(temp_file_vec)
 }

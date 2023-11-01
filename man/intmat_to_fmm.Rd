@@ -17,8 +17,6 @@ This function takes a numeric matrix and converts it into a
 Matrix Market file.
 }
 \examples{
-\dontrun{
 intmat <- matrix(c(1L, 2L, 3L, 4L), nrow = 2)
-intmat_to_fmm(intmat, "intmatrix.mtx")
-}
+intmat_to_fmm(intmat, tempfile(fileext = ".mtx"))
 }

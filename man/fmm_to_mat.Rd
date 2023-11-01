@@ -17,7 +17,10 @@ This function reads a Matrix Market file and converts it to a
 matrix in R.
 }
 \examples{
-\dontrun{
-mat <- fmm_to_mat("matrix.mtx")
-}
+# Create
+sample_mat <- matrix(c(1, 2, 3, 4), nrow = 2)
+temp_file_mat <- tempfile(fileext = ".mtx")
+write_fmm(sample_mat, temp_file_mat)
+# Read
+mat <- fmm_to_mat(temp_file_mat)
 }

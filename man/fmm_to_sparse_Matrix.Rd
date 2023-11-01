@@ -18,7 +18,10 @@ This function reads a Matrix Market file and converts it to a
 sparse matrix in R using the Matrix package.
 }
 \examples{
-\dontrun{
-sparse_mat <- fmm_to_sparse_Matrix("sparse_matrix.mtx")
-}
+# Create
+sample_sparse_mat <- Matrix::Matrix(c(1, 0, 0, 2), nrow = 2, sparse = TRUE)
+temp_file <- tempfile(fileext = ".mtx")
+write_fmm(sample_sparse_mat, temp_file)
+# Read
+sparse_mat <- fmm_to_sparse_Matrix(temp_file)
 }

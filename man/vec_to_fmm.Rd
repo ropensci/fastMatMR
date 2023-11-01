@@ -17,8 +17,6 @@ This function takes a numeric vector and converts it into a
 Matrix Market output file.
 }
 \examples{
-\dontrun{
 vec <- c(1, 2, 3)
-vec_to_fmm(vec, "vector.mtx")
-}
+vec_to_fmm(vec, tempfile(fileext = ".mtx"))
 }

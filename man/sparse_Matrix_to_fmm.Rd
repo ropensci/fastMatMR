@@ -17,8 +17,6 @@ This function takes a sparse numeric matrix and converts it into
 a Matrix Market file.
 }
 \examples{
-\dontrun{
 sparse_mat <- Matrix::Matrix(c(1, 0, 0, 2), nrow = 2, sparse = TRUE)
-sparse_Matrix_to_fmm(sparse_mat, "sparse_matrix.mtx")
-}
+sparse_Matrix_to_fmm(sparse_mat, tempfile(fileext = ".mtx"))
 }

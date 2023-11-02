@@ -3,12 +3,13 @@
 
 <!-- badges: start -->
 
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/fastMatMR)](https://cran.r-project.org/package=fastMatMR)
+[![Status at rOpenSci Software Peer
+Review](https://badges.ropensci.org/606_status.svg)](https://github.com/ropensci/software-review/issues/606)
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 ![runiverse-name](https://ropensci.r-universe.dev/badges/:name)
 ![runiverse-package](https://ropensci.r-universe.dev/badges/fastMatMR)
-[![Status at rOpenSci Software Peer
-Review](https://badges.ropensci.org/606_status.svg)](https://github.com/ropensci/software-review/issues/606)
 [![DOI](https://zenodo.org/badge/685246044.svg)](https://zenodo.org/badge/latestdoi/685246044)
 [![R-CMD-check](https://github.com/ropensci/fastMatMR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/fastMatMR/actions/workflows/R-CMD-check.yaml)
 [![pkgcheck](https://github.com/ropensci/fastMatMR/workflows/pkgcheck/badge.svg)](https://github.com/ropensci/fastMatMR/actions?query=workflow%3Apkgcheck)
@@ -75,15 +76,26 @@ operations to demonstrate the performance claims.
 
 ## Installation
 
-You can install the development version of `fastMatMR` from
-[GitHub](https://github.com/) with:
+### CRAN
+
+For the latest `CRAN` version:
+
+``` r
+install.packages("fastMatMR")
+```
+
+### R-Universe
+
+For the latest development version of `fastMatMR`:
 
 ``` r
 install.packages("fastMatMR",
                  repos = "https://ropensci.r-universe.dev")
 ```
 
-For the development release, one can use:
+### Development Git
+
+For the latest commit, one can use:
 
 ``` r
 # install.packages("devtools")

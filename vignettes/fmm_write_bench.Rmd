@@ -1,7 +1,7 @@
 ---
 title: "Benchmarking Sparse Matrix Market Write Operations"
 author: "Rohit Goswami"
-date: "2023-11-02"
+date: "2023-11-03"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Benchmarking Sparse Matrix Market Write Operations}
@@ -200,7 +200,7 @@ sessionInfo()
 #> 
 #> other attached packages:
 #> [1] ggplot2_3.4.4         microbenchmark_1.4.10 Matrix_1.5-4.1       
-#> [4] fastMatMR_1.2.4       testthat_3.1.10      
+#> [4] fastMatMR_1.2.5       testthat_3.1.10      
 #> 
 #> loaded via a namespace (and not attached):
 #>  [1] gtable_0.3.4      xfun_0.40         htmlwidgets_1.6.2 devtools_2.4.5   

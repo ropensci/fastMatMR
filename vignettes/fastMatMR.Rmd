@@ -109,16 +109,20 @@ Similarly, other `fmm_to_` functions can be used to read from `.mtx` files.
 
 Sparse matrices can be written and read by the `Matrix` library:
 
-```{r}
+```{r, eval=FALSE}
 spmat <- Matrix::Matrix(c(1, 0, 3, NA), nrow = 2, sparse = TRUE)
 temp_file_sp_na <- tempfile(fileext = ".mtx")
 Matrix::writeMM(spmat, temp_file_sp_na)
 Matrix::readMM(temp_file_sp_na)
+## NULL
+## 2 x 2 sparse Matrix of class "dgTMatrix"
+## [1,] 1  3e+00
+## [2,] . 1e+308
 ```
 
-However, as can be seen above, `NA` values are handled incorrectly, and dense
-matrices or vectors cannot be read or written in the matrix market format by the
-`Matrix` library.
+However, as can be seen above, `NA` values are handled incorrectly, and cause
+overflow. Dense matrices or vectors cannot be read or written in the matrix
+market format by the `Matrix` library.
 
 
 ### Reading Back In Python

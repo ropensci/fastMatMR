@@ -16,7 +16,7 @@ tracker](https://github.com/r-hub/rhub/issues/448#issuecomment-793776145).
 
 ❯ checking CRAN incoming feasibility ... [16s] NOTE
   Maintainer: 'Rohit Goswami <rgoswami@ieee.org>'
-  
+
   Days since last update: 1
 
 ❯ checking for non-standard things in the check directory ... NOTE
@@ -38,7 +38,7 @@ tracker](https://github.com/r-hub/rhub/issues/448#issuecomment-793776145).
 
 ❯ checking CRAN incoming feasibility ... [7s/25s] NOTE
   Maintainer: ‘Rohit Goswami <rgoswami@ieee.org>’
-  
+
   Days since last update: 1
 
 ❯ checking installed package size ... NOTE
@@ -60,7 +60,7 @@ tracker](https://github.com/r-hub/rhub/issues/448#issuecomment-793776145).
 
 ❯ checking CRAN incoming feasibility ... [8s/32s] NOTE
   Maintainer: ‘Rohit Goswami <rgoswami@ieee.org>’
-  
+
   Days since last update: 1
 
 ❯ checking installed package size ... NOTE

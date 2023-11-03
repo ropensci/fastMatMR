@@ -103,45 +103,48 @@ Which makes it faster to build the package and run checks.
 
 Before submitting or updating the package on CRAN, follow these steps to ensure a smooth submission process:
 
-1. **Document changes**:
-   - Update any relevant documentation.
+1. **Document changes and recreate**:
+   - Update documentation, and recreate vignettes.
      ```r
+     urlchecker::url_check()
      devtools::document()
-     ```
-
-2. **Recreate the `readme` file**:
-   - Ensure the README is up-to-date with the latest changes.
-     ```r
      devtools::build_readme()
+     ## Will take a while
+     Rscript tools/rebuild-benchmarks.R
      ```
 
-3. **Check the package**:
+2. **Check the package**:
    - This runs various checks to make sure the package is CRAN-ready.
      ```r
-     devtools::check()
+     devtools::check(remote = TRUE, manual = TRUE)
+     ## devtools::install_github('r-lib/revdepcheck')
+     revdepcheck::revdep_check(num_workers = 4)
      ```
 
-4. **Test on various platforms**:
-   - Before submission, it's beneficial to test your package on different platforms.
+3. **Test on various platforms**:
+   - Before submission, it's beneficial to test your package on different platforms. The commented lines are used to populate `cran_comments.md`.
      ```r
-     rhub::check_for_cran()   # Tests on multiple platforms
+     res_cran <- rhub::check_for_cran()   # Tests on multiple platforms
+     ## res_cran$cran_summary()
+     ubsan <- rhub::check_with_sanitizers() # A post-submission CRAN check
      devtools::check_win_devel()  # Specifically for Windows
+     devtools::check_mac_release() # Mac only
      ```
 
-5. **Adhere to best practices**:
+4. **Adhere to best practices**:
    - Using the `goodpractice` package can help ensure you're following best practices for R package development.
      ```r
      goodpractice::gp()
      ```
 
-6. **Bump the package version**:
+5. **Bump the package version**:
    - Depending on the extent and nature of changes, adjust the version of your package. Remember semantic versioning conventions.
      ```r
      # Use "major", "minor", or "patch" based on the changes
      fledge::bump_version("patch")
      ```
 
-7. **Submit to CRAN**:
+6. **Submit to CRAN**:
    - Once all checks pass and you've ensured the quality of your package, it's time to submit.
      ```r
      devtools::release()

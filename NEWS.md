@@ -6,6 +6,7 @@
 
 - Fix a UBSAN error from Matrix in a vignette
   + Caught by CRAN
+- Update the `CONTRIBUTING.md` with the release process
 
 
 # fastMatMR 1.2.4 (2023-11-02)

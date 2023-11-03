@@ -1,5 +1,13 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# fastMatMR 1.2.5 (2023-11-03)
+
+## Changes
+
+- Fix a UBSAN error from Matrix in a vignette
+  + Caught by CRAN
+
+
 # fastMatMR 1.2.4 (2023-11-02)
 
 - Same as previous version.

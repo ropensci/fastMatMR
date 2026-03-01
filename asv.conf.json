@@ -1,0 +1,13 @@
+{
+    "version": 1,
+    "project": "fastMatMR",
+    "project_url": "https://github.com/ropensci/fastMatMR",
+    "environment_type": "existing",
+    "benchmark_dir": "benchmarks",
+    "results_dir": ".asv/results",
+    "html_dir": ".asv/html",
+    "install_command": [],
+    "build_command": [],
+    "branches": ["HEAD"],
+    "repo": "."
+}

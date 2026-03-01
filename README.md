@@ -13,6 +13,7 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 [![DOI](https://zenodo.org/badge/685246044.svg)](https://zenodo.org/badge/latestdoi/685246044)
 [![R-CMD-check](https://github.com/ropensci/fastMatMR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/fastMatMR/actions/workflows/R-CMD-check.yaml)
 [![pkgcheck](https://github.com/ropensci/fastMatMR/workflows/pkgcheck/badge.svg)](https://github.com/ropensci/fastMatMR/actions?query=workflow%3Apkgcheck)
+[![Benchmarks](https://img.shields.io/badge/benchmarks-asv--perch-orange)](https://github.com/HaoZeke/asv-perch)
 <!-- badges: end -->
 
 ## About
@@ -127,6 +128,48 @@ Similarly, `fastMatMR` supports writing and reading from other `R`
 objects (e.g. standard R vectors and matrices), as seen in the [getting
 started
 vignette](https://docs.ropensci.org/fastMatMR/articles/fastMatMR.html).
+
+## Benchmarks
+
+Performance is tracked across PRs using
+[ASV](https://asv.readthedocs.io/) (Airspeed Velocity) with
+[asv-perch](https://github.com/HaoZeke/asv-perch) for CI comment
+integration. ASV's `track_*` interface runs R benchmarks via `Rscript`
+subprocess calls, making the framework language-agnostic while timing
+actual R code with `system.time()`.
+
+Benchmarks cover sparse and dense Matrix Market read/write operations
+at varying matrix sizes (100x100 to 1000x1000).
+
+### Running locally
+
+``` bash
+# Install the R package into the bench environment
+pixi run -e bench R CMD INSTALL --no-docs .
+
+# Validate benchmark definitions
+pixi run -e bench asv check
+
+# Run benchmarks against the current commit
+pixi run -e bench bash -c "asv machine --yes"
+pixi run -e bench asv run \
+  -E "existing:$(pixi run -e bench which python)" \
+  --set-commit-hash $(git rev-parse HEAD) \
+  --record-samples --quick
+```
+
+### CI architecture
+
+Two GitHub Actions workflows handle PR benchmarks:
+
+- **`ci_benchmark.yml`** runs on `pull_request` events with read-only
+  permissions. It benchmarks both the base and PR commits using a
+  matrix strategy, then combines results via
+  [asv-spyglass](https://github.com/airspeed-velocity/asv_spyglass).
+- **`ci_bench_commenter.yml`** triggers on `workflow_run` completion
+  and posts a comparison table as a PR comment using asv-perch.
+
+This split ensures fork PRs cannot access write permissions.
 
 ## Contributing
 

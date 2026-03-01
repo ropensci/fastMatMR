@@ -1,4 +1,4 @@
-[project]
+[workspace]
 name = "fastMatMR"
 version = "0.1.0"
 description = "Add a short description here"
@@ -18,3 +18,19 @@ numpy = "1.25.2.*"
 scipy = "1.11.2.*"
 towncrier = "23.6.0.*"
 tbump = "6.9.0.*"
+
+[feature.bench.dependencies]
+compilers = ">=1.6"
+r-base = ">=4.3"
+r-cpp11 = ">=0.5.0"
+r-matrix = ">=1.6"
+r-spam = ">=2.9"
+r-sparsem = ">=1.84"
+pip = "*"
+
+[feature.bench.pypi-dependencies]
+asv = ">=0.6"
+scipy = ">=1.11"
+
+[environments]
+bench = { features = ["bench"], solve-group = "default" }

@@ -38,3 +38,8 @@
 ^doc$
 ^Meta$
 ^revdep$
+^\.pixi$
+^\.asv$
+^benchmarks$
+^asv\.conf\.json$
+^\.claude$

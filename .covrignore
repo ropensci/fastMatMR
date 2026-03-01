@@ -1,4 +1,4 @@
-inst/include/fast_matrix_market/*
-inst/include/fast_matrix_market/app/*
-inst/include/fast_matrix_market/third_party/*
+src/fast_matrix_market/*
+src/fast_matrix_market/app/*
+src/fast_matrix_market/thirdparty/*
 .pixi/*

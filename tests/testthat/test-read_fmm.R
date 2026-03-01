@@ -65,3 +65,58 @@ test_that("fmm_to_sparse_Matrix reads Matrix Market file correctly", {
   expect_true(inherits(read_sparsemat, "dgCMatrix"))
   expect_true(all(original_sparsemat == read_sparsemat))
 })
+
+# -- gzip (.mtx.gz) read tests --
+
+test_that("fmm_to_vec reads .mtx.gz files", {
+  temp_path <- temp_path_fixture()
+  vec <- c(1, 2, 3)
+  gz_path <- temp_path("test_vec.mtx.gz")
+  write_fmm(vec, gz_path)
+  result <- fmm_to_vec(gz_path)
+  expect_equal(result, vec)
+})
+
+test_that("fmm_to_mat reads .mtx.gz files", {
+  temp_path <- temp_path_fixture()
+  mat <- matrix(c(1, 2, 3, 4, 5, 6), nrow = 2)
+  gz_path <- temp_path("test_mat.mtx.gz")
+  write_fmm(mat, gz_path)
+  result <- fmm_to_mat(gz_path)
+  expect_equal(result, mat)
+})
+
+test_that("fmm_to_sparse_Matrix reads .mtx.gz files", {
+  temp_path <- temp_path_fixture()
+  sp <- sparseMatrix(
+    i = c(1, 2, 3),
+    j = c(2, 3, 1),
+    x = c(4.5, 5.5, 6.5),
+    dims = c(3, 3)
+  )
+  gz_path <- temp_path("test_sparse.mtx.gz")
+  write_fmm(sp, gz_path)
+  result <- fmm_to_sparse_Matrix(gz_path)
+  expect_equal(result@x, sp@x)
+  expect_equal(result@i, sp@i)
+  expect_equal(result@p, sp@p)
+  expect_equal(result@Dim, sp@Dim)
+})
+
+test_that("fmm_to_vec reads integer vector from .mtx.gz", {
+  temp_path <- temp_path_fixture()
+  intvec <- c(10L, 20L, 30L)
+  gz_path <- temp_path("test_intvec.mtx.gz")
+  write_fmm(intvec, gz_path)
+  result <- fmm_to_vec(gz_path)
+  expect_equal(result, intvec)
+})
+
+test_that("fmm_to_mat reads integer matrix from .mtx.gz", {
+  temp_path <- temp_path_fixture()
+  intmat <- matrix(c(1L, 2L, 3L, 4L), nrow = 2)
+  gz_path <- temp_path("test_intmat.mtx.gz")
+  write_fmm(intmat, gz_path)
+  result <- fmm_to_mat(gz_path)
+  expect_equal(result, intmat)
+})

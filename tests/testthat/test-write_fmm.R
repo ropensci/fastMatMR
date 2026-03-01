@@ -135,3 +135,31 @@ test_that("spam_to_fmm and fmm_to_spam work directly", {
   expect_true(inherits(result, "spam"))
   expect_equal(as.matrix(result), as.matrix(sp))
 })
+
+# --- SparseM support tests ---
+
+test_that("SparseM roundtrip works via write_fmm dispatcher", {
+  skip_if_not_installed("SparseM")
+  temp_path <- temp_path_fixture()
+  csr <- SparseM::as.matrix.csr(matrix(c(1, 0, 0, 2), nrow = 2))
+  expect_true(write_fmm(csr, temp_path("sparsem.mtx")))
+  result <- fmm_to_SparseM(temp_path("sparsem.mtx"))
+  expect_true(inherits(result, "matrix.csr"))
+  expect_equal(result@ra, csr@ra)
+  expect_equal(result@ja, csr@ja)
+  expect_equal(result@ia, csr@ia)
+  expect_equal(result@dimension, csr@dimension)
+})
+
+test_that("SparseM_to_fmm and fmm_to_SparseM work directly", {
+  skip_if_not_installed("SparseM")
+  temp_path <- temp_path_fixture()
+  csr <- SparseM::as.matrix.csr(matrix(c(1, 0, 0, 2), nrow = 2))
+  expect_true(SparseM_to_fmm(csr, temp_path("sparsem_direct.mtx")))
+  result <- fmm_to_SparseM(temp_path("sparsem_direct.mtx"))
+  expect_true(inherits(result, "matrix.csr"))
+  expect_equal(result@ra, csr@ra)
+  expect_equal(result@ja, csr@ja)
+  expect_equal(result@ia, csr@ia)
+  expect_equal(result@dimension, csr@dimension)
+})

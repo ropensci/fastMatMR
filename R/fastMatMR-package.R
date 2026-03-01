@@ -157,6 +157,62 @@ spam_to_fmm <- function(input, filename) {
   sparse_Matrix_to_fmm(dgc, filename)
 }
 
+#' @export fmm_to_SparseM
+#' @rdname fmm_to_SparseM
+#' @name fmm_to_SparseM
+#' @title Convert Matrix Market File to SparseM matrix.csr
+#' @description This function reads a Matrix Market file and converts it to a
+#'   sparse matrix using the SparseM package.
+#' @param filename The name of the input Matrix Market file to be read.
+#' @return A matrix.csr object containing the data read from the Matrix Market
+#'   file.
+#' @examplesIf requireNamespace("SparseM", quietly = TRUE)
+#' sample_sparse <- Matrix::Matrix(c(1, 0, 0, 2), nrow = 2, sparse = TRUE)
+#' tmp <- tempfile(fileext = ".mtx")
+#' write_fmm(sample_sparse, tmp)
+#' csr <- fmm_to_SparseM(tmp)
+fmm_to_SparseM <- function(filename) {
+  if (!requireNamespace("SparseM", quietly = TRUE)) {
+    stop("Package 'SparseM' is required for this function.")
+  }
+  dgc <- fmm_to_sparse_Matrix(filename)
+  tri <- Matrix::summary(dgc)
+  nr <- dgc@Dim[1]
+  ord <- order(tri$i, tri$j)
+  ra <- tri$x[ord]
+  ja <- as.integer(tri$j[ord])
+  ia <- c(1L, cumsum(tabulate(tri$i[ord], nbins = nr)) + 1L)
+  methods::new("matrix.csr", ra = ra, ja = ja, ia = ia,
+               dimension = dgc@Dim)
+}
+
+#' @export SparseM_to_fmm
+#' @rdname SparseM_to_fmm
+#' @name SparseM_to_fmm
+#' @title Convert a SparseM matrix.csr to Matrix Market Format
+#' @description This function takes a SparseM matrix.csr sparse matrix and
+#'   converts it into a Matrix Market file.
+#' @param input A matrix.csr sparse matrix to be converted.
+#' @param filename The name of the output file where the Matrix Market formatted
+#'   data will be saved.
+#' @return A boolean indicating success or failure. Writes a MTX file to disk.
+#' @examplesIf requireNamespace("SparseM", quietly = TRUE)
+#' csr <- SparseM::as.matrix.csr(matrix(c(1, 0, 0, 2), nrow = 2))
+#' SparseM_to_fmm(csr, tempfile(fileext = ".mtx"))
+SparseM_to_fmm <- function(input, filename) {
+  if (!requireNamespace("SparseM", quietly = TRUE)) {
+    stop("Package 'SparseM' is required for this function.")
+  }
+  if (!requireNamespace("Matrix", quietly = TRUE)) {
+    stop("Package 'Matrix' is required for this function.")
+  }
+  dims <- input@dimension
+  rows <- rep(seq_len(dims[1]), diff(input@ia))
+  dgc <- Matrix::sparseMatrix(i = rows, j = input@ja, x = input@ra,
+                               dims = dims)
+  sparse_Matrix_to_fmm(dgc, filename)
+}
+
 #' @export vec_to_fmm
 #' @rdname vec_to_fmm
 #' @name vec_to_fmm
@@ -284,6 +340,8 @@ write_fmm <- function(input, filename = "out.mtx") {
     ret <- sparse_Matrix_to_fmm(input, actual_fname) # nolint. C++ function.
   } else if (inherits(input, "spam")) {
     ret <- spam_to_fmm(input, actual_fname)
+  } else if (inherits(input, "matrix.csr")) {
+    ret <- SparseM_to_fmm(input, actual_fname)
   } else {
     stop(
       paste(

@@ -8,13 +8,12 @@
 #include "cpp11.hpp"
 #include "helpers.h"
 
-#include "../inst/include/fast_matrix_market/fast_matrix_market.hpp"
+#include "fast_matrix_market/fast_matrix_market.hpp"
 
 namespace fmm = fast_matrix_market;
 
 [[cpp11::register]] //
 bool vec_to_fmm(cpp11::doubles r_vec, std::string filename) {
-  std::string mm;
   std::vector<double> std_vec(r_vec.size());
   std::copy(r_vec.begin(), r_vec.end(), std_vec.begin());
   fmm::matrix_market_header header(1, std_vec.size());
@@ -30,7 +29,6 @@ bool vec_to_fmm(cpp11::doubles r_vec, std::string filename) {
 
 [[cpp11::register]] //
 bool intvec_to_fmm(cpp11::integers r_vec, std::string filename) {
-  std::string mm;
   std::vector<int> std_vec(r_vec.size());
   std::copy(r_vec.begin(), r_vec.end(), std_vec.begin());
   fmm::matrix_market_header header(1, std_vec.size());

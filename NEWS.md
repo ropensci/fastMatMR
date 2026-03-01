@@ -1,5 +1,16 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# fastMatMR 1.2.6 (2026-03-01)
+
+## Changes
+
+- Require cpp11 >= 0.5.0 to resolve non-API usage of `SETLENGTH`,
+  `SET_GROWABLE_BIT`, and `SET_TRUELENGTH` (cause of CRAN archival)
+- Move vendored fast_matrix_market headers from `inst/include/` to `src/`
+  to reduce installed package size (headers not needed at runtime)
+- Remove unused C++ includes and variables
+- Update CI action versions
+
 # fastMatMR 1.2.5 (2023-11-03)
 
 ## Changes

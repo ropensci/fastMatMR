@@ -2,6 +2,35 @@
 #' @useDynLib fastMatMR, .registration = TRUE
 ## usethis namespace: end
 
+# Internal helper: decompress a .gz file to a temporary .mtx file.
+.maybe_decompress <- function(filename) {
+  if (!grepl("\\.gz$", filename)) return(list(path = filename, cleanup = FALSE))
+  tmp <- tempfile(fileext = ".mtx")
+  input <- gzfile(filename, "rb")
+  output <- file(tmp, "wb")
+  on.exit({close(input); close(output)})
+  repeat {
+    chunk <- readBin(input, "raw", n = 65536L)
+    if (length(chunk) == 0L) break
+    writeBin(chunk, output)
+  }
+  list(path = tmp, cleanup = TRUE)
+}
+
+# Internal helper: compress a .mtx file to .gz.
+.compress_to_gz <- function(source, dest) {
+  input <- file(source, "rb")
+  output <- gzfile(dest, "wb")
+  on.exit({close(input); close(output)})
+  repeat {
+    chunk <- readBin(input, "raw", n = 65536L)
+    if (length(chunk) == 0L) break
+    writeBin(chunk, output)
+  }
+  unlink(source)
+  invisible(TRUE)
+}
+
 #' @export fmm_to_vec
 #' @rdname fmm_to_vec
 #' @name fmm_to_vec
@@ -20,7 +49,9 @@
 #' vec <- fmm_to_vec(temp_file_vec)
 fmm_to_vec <- function(filename) {
   expanded_filename <- path.expand(filename)
-  result <- cpp_fmm_to_vec(expanded_filename)
+  info <- .maybe_decompress(expanded_filename)
+  on.exit(if (info$cleanup) unlink(info$path))
+  result <- cpp_fmm_to_vec(info$path)
   return(result)
 }
 
@@ -41,7 +72,9 @@ fmm_to_vec <- function(filename) {
 #' mat <- fmm_to_mat(temp_file_mat)
 fmm_to_mat <- function(filename) {
   expanded_filename <- path.expand(filename)
-  result <- cpp_fmm_to_mat(expanded_filename)
+  info <- .maybe_decompress(expanded_filename)
+  on.exit(if (info$cleanup) unlink(info$path))
+  result <- cpp_fmm_to_mat(info$path)
   return(result)
 }
 
@@ -63,7 +96,9 @@ fmm_to_mat <- function(filename) {
 #' sparse_mat <- fmm_to_sparse_Matrix(temp_file)
 fmm_to_sparse_Matrix <- function(filename) {
   expanded_filename <- path.expand(filename)
-  result <- cpp_fmm_to_sparse_Matrix(expanded_filename)
+  info <- .maybe_decompress(expanded_filename)
+  on.exit(if (info$cleanup) unlink(info$path))
+  result <- cpp_fmm_to_sparse_Matrix(info$path)
   return(result)
 }
 
@@ -172,20 +207,26 @@ NULL
 write_fmm <- function(input, filename = "out.mtx") {
   # Expand the ~ character to the full path
   expanded_fname <- path.expand(filename)
+  gz <- grepl("\\.gz$", expanded_fname)
+  if (gz) {
+    actual_fname <- tempfile(fileext = ".mtx")
+  } else {
+    actual_fname <- expanded_fname
+  }
   if (is.vector(input)) {
     if (is.integer(input)) {
-      return(intvec_to_fmm(input, expanded_fname)) # nolint. C++ function.
+      ret <- intvec_to_fmm(input, actual_fname) # nolint. C++ function.
     } else {
-      return(vec_to_fmm(input, expanded_fname)) # nolint. C++ function.
+      ret <- vec_to_fmm(input, actual_fname) # nolint. C++ function.
     }
   } else if (is.matrix(input)) {
     if (is.integer(input)) {
-      return(intmat_to_fmm(input, expanded_fname)) # nolint. C++ function.
+      ret <- intmat_to_fmm(input, actual_fname) # nolint. C++ function.
     } else {
-      return(mat_to_fmm(input, expanded_fname)) # nolint. C++ function.
+      ret <- mat_to_fmm(input, actual_fname) # nolint. C++ function.
     }
   } else if (inherits(input, "sparseMatrix")) {
-    return(sparse_Matrix_to_fmm(input, expanded_fname)) # nolint. C++ function.
+    ret <- sparse_Matrix_to_fmm(input, actual_fname) # nolint. C++ function.
   } else {
     stop(
       paste(
@@ -195,4 +236,6 @@ write_fmm <- function(input, filename = "out.mtx") {
       )
     )
   }
+  if (gz) .compress_to_gz(actual_fname, expanded_fname)
+  return(ret)
 }

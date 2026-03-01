@@ -65,3 +65,45 @@ test_that("fmm_to_sparse_Matrix reads Matrix Market file correctly", {
   expect_true(inherits(read_sparsemat, "dgCMatrix"))
   expect_true(all(original_sparsemat == read_sparsemat))
 })
+
+# --- gzip roundtrip tests ---
+
+test_that("fmm_to_vec reads .mtx.gz files", {
+  temp_path <- temp_path_fixture()
+  vec <- c(1, 2, 3)
+  write_fmm(vec, temp_path("vec.mtx.gz"))
+  result <- fmm_to_vec(temp_path("vec.mtx.gz"))
+  expect_equal(result, vec)
+})
+
+test_that("fmm_to_mat reads .mtx.gz files", {
+  temp_path <- temp_path_fixture()
+  mat <- matrix(c(1, 2, 3, 4), nrow = 2)
+  write_fmm(mat, temp_path("mat.mtx.gz"))
+  result <- fmm_to_mat(temp_path("mat.mtx.gz"))
+  expect_equal(result, mat)
+})
+
+test_that("fmm_to_sparse_Matrix reads .mtx.gz files", {
+  temp_path <- temp_path_fixture()
+  sp <- Matrix::Matrix(c(1, 0, 0, 2), nrow = 2, sparse = TRUE)
+  write_fmm(sp, temp_path("sp.mtx.gz"))
+  result <- fmm_to_sparse_Matrix(temp_path("sp.mtx.gz"))
+  expect_true(all(sp == result))
+})
+
+test_that("integer vector roundtrips through .mtx.gz", {
+  temp_path <- temp_path_fixture()
+  ivec <- c(1L, 2L, 3L)
+  write_fmm(ivec, temp_path("ivec.mtx.gz"))
+  result <- fmm_to_vec(temp_path("ivec.mtx.gz"))
+  expect_equal(result, ivec)
+})
+
+test_that("integer matrix roundtrips through .mtx.gz", {
+  temp_path <- temp_path_fixture()
+  imat <- matrix(c(1L, 2L, 3L, 4L), nrow = 2)
+  write_fmm(imat, temp_path("imat.mtx.gz"))
+  result <- fmm_to_mat(temp_path("imat.mtx.gz"))
+  expect_equal(result, imat)
+})

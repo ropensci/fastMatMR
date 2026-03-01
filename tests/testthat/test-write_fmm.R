@@ -91,3 +91,25 @@ test_that("sparse_Matrix_to_fmm works with sparse numeric matrices", {
   sparse_mat <- Matrix::Matrix(c(1, 0, 0, 2), nrow = 2, sparse = TRUE)
   expect_true(sparse_Matrix_to_fmm(sparse_mat, temp_path("direct_sparse.mtx")))
 })
+
+# --- gzip write tests ---
+
+test_that("write_fmm produces a valid .gz file", {
+  temp_path <- temp_path_fixture()
+  vec <- c(1, 2, 3)
+  expect_true(write_fmm(vec, temp_path("vec.mtx.gz")))
+  expect_true(file.exists(temp_path("vec.mtx.gz")))
+  # Verify it is actually gzip compressed
+  raw <- readBin(temp_path("vec.mtx.gz"), "raw", n = 2)
+  expect_equal(raw, as.raw(c(0x1f, 0x8b)))
+})
+
+test_that("write_fmm to .mtx.gz works for all types", {
+  temp_path <- temp_path_fixture()
+  expect_true(write_fmm(c(1, 2), temp_path("v.mtx.gz")))
+  expect_true(write_fmm(c(1L, 2L), temp_path("iv.mtx.gz")))
+  expect_true(write_fmm(matrix(1:4, 2), temp_path("im.mtx.gz")))
+  expect_true(write_fmm(matrix(c(1, 2, 3, 4), 2), temp_path("m.mtx.gz")))
+  sp <- Matrix::Matrix(c(1, 0, 0, 2), nrow = 2, sparse = TRUE)
+  expect_true(write_fmm(sp, temp_path("sp.mtx.gz")))
+})

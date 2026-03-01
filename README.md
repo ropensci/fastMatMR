@@ -21,7 +21,7 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 Market files](https://math.nist.gov/MatrixMarket/formats.html) using the
 high-performance [fast_matrix_market C++
 library](https://github.com/alugowski/fast_matrix_market) (version
-1.7.4).
+1.7.6).
 
 ## Why?
 

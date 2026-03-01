@@ -92,6 +92,33 @@ test_that("sparse_Matrix_to_fmm works with sparse numeric matrices", {
   expect_true(sparse_Matrix_to_fmm(sparse_mat, temp_path("direct_sparse.mtx")))
 })
 
+# --- SparseM tests ---
+
+test_that("SparseM roundtrip works via write_fmm dispatcher", {
+  skip_if_not_installed("SparseM")
+  temp_path <- temp_path_fixture()
+  csr <- SparseM::as.matrix.csr(matrix(c(1, 0, 0, 2), nrow = 2))
+  expect_true(write_fmm(csr, temp_path("sparsem.mtx")))
+  result <- fmm_to_SparseM(temp_path("sparsem.mtx"))
+  expect_true(inherits(result, "matrix.csr"))
+  expect_equal(result@ra, csr@ra)
+  expect_equal(result@ja, csr@ja)
+  expect_equal(result@ia, csr@ia)
+  expect_equal(result@dimension, csr@dimension)
+})
+
+test_that("SparseM_to_fmm and fmm_to_SparseM roundtrip", {
+  skip_if_not_installed("SparseM")
+  temp_path <- temp_path_fixture()
+  csr <- SparseM::as.matrix.csr(matrix(c(5, 0, 3, 0, 0, 7, 0, 1, 0), nrow = 3))
+  expect_true(SparseM_to_fmm(csr, temp_path("sparsem_direct.mtx")))
+  result <- fmm_to_SparseM(temp_path("sparsem_direct.mtx"))
+  expect_equal(result@ra, csr@ra)
+  expect_equal(result@ja, csr@ja)
+  expect_equal(result@ia, csr@ia)
+  expect_equal(result@dimension, csr@dimension)
+})
+
 # --- gzip write tests ---
 
 test_that("write_fmm produces a valid .gz file", {
@@ -99,7 +126,6 @@ test_that("write_fmm produces a valid .gz file", {
   vec <- c(1, 2, 3)
   expect_true(write_fmm(vec, temp_path("vec.mtx.gz")))
   expect_true(file.exists(temp_path("vec.mtx.gz")))
-  # Verify it is actually gzip compressed
   raw <- readBin(temp_path("vec.mtx.gz"), "raw", n = 2)
   expect_equal(raw, as.raw(c(0x1f, 0x8b)))
 })

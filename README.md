@@ -50,7 +50,9 @@ Compiler](http://tensor-compiler.org/docs/tensors.html) (TACO).
 ### Features
 
 - **Extended Support**: `fastMatMR` supports standard R vectors,
-  matrices, as well as `Matrix` sparse objects.
+  matrices, `Matrix` sparse objects, `spam` sparse matrices, and
+  `SparseM` `matrix.csr` objects. Gzip-compressed `.mtx.gz` files are
+  handled transparently.
 
 - **Performance**: The package is a thin wrapper around one of the
   fastest C++ libraries for reading and writing `.mtx` files.

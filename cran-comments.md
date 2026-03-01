@@ -5,6 +5,10 @@ This package was archived on 2024-08-19 due to non-API C calls
 the cpp11 package headers. This release requires cpp11 >= 0.5.0, which
 removed those non-API calls.
 
+Additional changes in this release: transparent gzip (.mtx.gz) support,
+spam and SparseM sparse matrix interoperability (both optional Suggests),
+and expanded test coverage.
+
 ## R CMD check results
 
 0 errors | 0 warnings | 1 note

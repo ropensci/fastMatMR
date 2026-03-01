@@ -2,7 +2,19 @@
 
 # fastMatMR 1.2.6 (2026-03-01)
 
-## Changes
+## Features
+
+- Transparent gzip support for all read/write functions via `.mtx.gz`
+  file extension ([#28](https://github.com/ropensci/fastMatMR/issues/28))
+- Add `fmm_to_spam()` and `spam_to_fmm()` for reading/writing `spam`
+  sparse matrices ([#2](https://github.com/ropensci/fastMatMR/issues/2))
+- Add `fmm_to_SparseM()` and `SparseM_to_fmm()` for reading/writing
+  `SparseM` `matrix.csr` objects
+  ([#1](https://github.com/ropensci/fastMatMR/issues/1))
+- `write_fmm()` dispatcher now handles `spam` and `matrix.csr` inputs
+- ASV benchmark infrastructure with CI integration
+
+## Bug Fixes
 
 - Require cpp11 >= 0.5.0 to resolve non-API usage of `SETLENGTH`,
   `SET_GROWABLE_BIT`, and `SET_TRUELENGTH` (cause of CRAN archival)
@@ -10,8 +22,6 @@
   (adds `cstdint` include fix, removes unused `charconv` include)
 - Move vendored fast_matrix_market headers from `inst/include/` to `src/`
   to reduce installed package size (headers not needed at runtime)
-- Remove unused C++ includes and variables
-- Update CI action versions
 
 # fastMatMR 1.2.5 (2023-11-03)
 

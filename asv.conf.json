@@ -8,5 +8,6 @@
     "html_dir": ".asv/html",
     "install_command": [],
     "build_command": [],
+    "branches": ["HEAD"],
     "repo": "."
 }

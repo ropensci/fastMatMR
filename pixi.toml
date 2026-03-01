@@ -24,6 +24,8 @@ compilers = ">=1.6"
 r-base = ">=4.3"
 r-cpp11 = ">=0.5.0"
 r-matrix = ">=1.6"
+r-spam = ">=2.9"
+r-sparsem = ">=1.84"
 pip = "*"
 
 [feature.bench.pypi-dependencies]

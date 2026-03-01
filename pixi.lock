@@ -130,9 +130,13 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/python_abi-3.11-8_cp311.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/r-base-4.3.3-h43501ad_22.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/r-cpp11-0.5.2-r43h785f33e_1.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/r-dotcall64-1.2-r43hb67ce94_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/r-lattice-0.22_7-r43h2b5f3a1_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/r-matrix-1.6_5-r43he966344_1.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/r-rcpp-1.1.0-r43h93ab643_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/r-renv-1.0.2-r43hc72bb7e_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/r-spam-2.11_1-r43h2ddecb4_1.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/r-sparsem-1.84_2-r43hc4980d5_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/radian-0.6.7-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/rchitect-0.4.9-py311h49ec1c0_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/readline-8.3-h853b02a_0.conda
@@ -3089,6 +3093,20 @@ packages:
   purls: []
   size: 234214
   timestamp: 1742373558016
+- conda: https://conda.anaconda.org/conda-forge/linux-64/r-dotcall64-1.2-r43hb67ce94_0.conda
+  sha256: 3dadc8ac388fc55b52993276447fba1b0b9c0b64bf0f06fbcc6e6f0a8874aecc
+  md5: 85aec1f86a06de00df5267c848d645f7
+  depends:
+  - __glibc >=2.17,<3.0.a0
+  - libgcc >=13
+  - libgfortran
+  - libgfortran5 >=13.3.0
+  - r-base >=4.3,<4.4.0a0
+  license: GPL-2.0-or-later
+  license_family: GPL3
+  purls: []
+  size: 50307
+  timestamp: 1728091021333
 - conda: https://conda.anaconda.org/conda-forge/linux-64/r-lattice-0.22_7-r43h2b5f3a1_0.conda
   sha256: 79cd66c7cd01ac6862ae977595707c87419e80473c55348a2a5f2b8348f90aea
   md5: 1902233545ef5232dacdd973153d77c4
@@ -3115,6 +3133,19 @@ packages:
   purls: []
   size: 3922222
   timestamp: 1720816480009
+- conda: https://conda.anaconda.org/conda-forge/linux-64/r-rcpp-1.1.0-r43h93ab643_0.conda
+  sha256: a67dcf539995644d61cf8309e37ea5e6266757ca2fac2f823056eac19abb1b2c
+  md5: b10c60cf4d65df16b0fe2a17e2324375
+  depends:
+  - __glibc >=2.17,<3.0.a0
+  - libgcc >=13
+  - libstdcxx >=13
+  - r-base >=4.3,<4.4.0a0
+  license: GPL-2.0-or-later
+  license_family: GPL2
+  purls: []
+  size: 2073790
+  timestamp: 1751533249085
 - conda: https://conda.anaconda.org/conda-forge/noarch/r-renv-1.0.2-r43hc72bb7e_0.conda
   sha256: f163615f5db6bc467652b96f6bdb357aaee9048f3b0ba27cd070426458cbffe2
   md5: c5b0929337334892103c3b60da5ec443
@@ -3125,6 +3156,39 @@ packages:
   purls: []
   size: 2024150
   timestamp: 1692091886919
+- conda: https://conda.anaconda.org/conda-forge/linux-64/r-spam-2.11_1-r43h2ddecb4_1.conda
+  sha256: 66e60b90cde10a7ae5f211326553f548a0f3b5ca25edd681f1d041805cd5d64f
+  md5: 2dda3d8b5807f849b308c046d7e3ed68
+  depends:
+  - __glibc >=2.17,<3.0.a0
+  - libblas >=3.9.0,<4.0a0
+  - libgcc >=14
+  - libgfortran
+  - libgfortran5 >=14.3.0
+  - liblapack >=3.9.0,<4.0a0
+  - libstdcxx >=14
+  - r-base >=4.3,<4.4.0a0
+  - r-dotcall64
+  - r-rcpp >=1.0.8.3
+  license: LGPL-2.0-only OR BSD-3-Clause
+  license_family: LGPL
+  purls: []
+  size: 2750652
+  timestamp: 1756390206168
+- conda: https://conda.anaconda.org/conda-forge/linux-64/r-sparsem-1.84_2-r43hc4980d5_0.conda
+  sha256: b4e2c53e2d58e3209ed55ee616e2bff558f6fc28c17de283de6b66fed3c06963
+  md5: 951c5138758a0d45ad351a6eeeb19833
+  depends:
+  - __glibc >=2.17,<3.0.a0
+  - libgcc-ng >=12
+  - libgfortran-ng
+  - libgfortran5 >=12.4.0
+  - r-base >=4.3,<4.4.0a0
+  license: GPL-2.0-or-later
+  license_family: GPL3
+  purls: []
+  size: 832979
+  timestamp: 1721459931793
 - conda: https://conda.anaconda.org/conda-forge/noarch/radian-0.6.7-pyhd8ed1ab_0.conda
   sha256: bdfbfdcfc9dd534d8bb421465cda4cfef0c63833ef91650f3ba54eab0cd05864
   md5: 2428e01082eba611b77754c848903f8c

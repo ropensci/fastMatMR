@@ -43,8 +43,7 @@ bool intvec_to_fmm(cpp11::integers r_vec, std::string filename) {
 }
 
 [[cpp11::register]] //
-bool mat_to_fmm(cpp11::doubles_matrix<> r_mat,
-               std::string filename) {
+bool mat_to_fmm(cpp11::doubles_matrix<> r_mat, std::string filename) {
   int nrows = r_mat.nrow();
   int ncols = r_mat.ncol();
   std::vector<double> std_vec(nrows * ncols);
@@ -66,8 +65,7 @@ bool mat_to_fmm(cpp11::doubles_matrix<> r_mat,
 }
 
 [[cpp11::register]] //
-bool intmat_to_fmm(cpp11::integers_matrix<> r_mat,
-                   std::string filename) {
+bool intmat_to_fmm(cpp11::integers_matrix<> r_mat, std::string filename) {
   int nrows = r_mat.nrow();
   int ncols = r_mat.ncol();
   std::vector<int> std_vec(nrows * ncols);

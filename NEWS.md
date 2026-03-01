@@ -6,6 +6,8 @@
 
 - Require cpp11 >= 0.5.0 to resolve non-API usage of `SETLENGTH`,
   `SET_GROWABLE_BIT`, and `SET_TRUELENGTH` (cause of CRAN archival)
+- Update vendored fast_matrix_market C++ library from 1.7.4 to 1.7.6
+  (adds `cstdint` include fix, removes unused `charconv` include)
 - Move vendored fast_matrix_market headers from `inst/include/` to `src/`
   to reduce installed package size (headers not needed at runtime)
 - Remove unused C++ includes and variables

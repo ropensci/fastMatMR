@@ -119,6 +119,116 @@ test_that("SparseM_to_fmm and fmm_to_SparseM roundtrip", {
   expect_equal(result@dimension, csr@dimension)
 })
 
+# --- direct C++ wrapper tests ---
+
+test_that("vec_to_fmm works with double vectors directly", {
+  temp_path <- temp_path_fixture()
+  dbl_vec <- c(1.1, 2.2, 3.3)
+  expect_true(vec_to_fmm(dbl_vec, temp_path("direct_dbl_vec.mtx")))
+})
+
+test_that("mat_to_fmm works with double matrices directly", {
+  temp_path <- temp_path_fixture()
+  dbl_mat <- matrix(c(1.1, 2.2, 3.3, 4.4), nrow = 2)
+  expect_true(mat_to_fmm(dbl_mat, temp_path("direct_dbl_mat.mtx")))
+})
+
+# --- write_fmm dispatcher tests ---
+
+test_that("write_fmm dispatches correctly for double vector", {
+  temp_path <- temp_path_fixture()
+  dbl_vec <- c(10.5, 20.5, 30.5)
+  expect_true(write_fmm(dbl_vec, temp_path("dispatch_dbl_vec.mtx")))
+  result <- fmm_to_vec(temp_path("dispatch_dbl_vec.mtx"))
+  expect_equal(result, dbl_vec)
+})
+
+test_that("write_fmm dispatches correctly for integer vector", {
+  temp_path <- temp_path_fixture()
+  int_vec <- c(10L, 20L, 30L)
+  expect_true(write_fmm(int_vec, temp_path("dispatch_int_vec.mtx")))
+  result <- fmm_to_vec(temp_path("dispatch_int_vec.mtx"))
+  expect_equal(result, int_vec)
+})
+
+test_that("write_fmm dispatches correctly for double matrix", {
+  temp_path <- temp_path_fixture()
+  dbl_mat <- matrix(c(1.5, 2.5, 3.5, 4.5), nrow = 2)
+  expect_true(write_fmm(dbl_mat, temp_path("dispatch_dbl_mat.mtx")))
+  result <- fmm_to_mat(temp_path("dispatch_dbl_mat.mtx"))
+  expect_equal(result, dbl_mat)
+})
+
+test_that("write_fmm dispatches correctly for integer matrix", {
+  temp_path <- temp_path_fixture()
+  int_mat <- matrix(c(10L, 20L, 30L, 40L), nrow = 2)
+  expect_true(write_fmm(int_mat, temp_path("dispatch_int_mat.mtx")))
+  result <- fmm_to_mat(temp_path("dispatch_int_mat.mtx"))
+  expect_equal(result, int_mat)
+})
+
+test_that("write_fmm dispatches correctly for sparse matrix", {
+  temp_path <- temp_path_fixture()
+  sp <- sparseMatrix(i = c(1, 2), j = c(2, 3), x = c(5.5, 6.6), dims = c(3, 3))
+  expect_true(write_fmm(sp, temp_path("dispatch_sparse.mtx")))
+  result <- fmm_to_sparse_Matrix(temp_path("dispatch_sparse.mtx"))
+  expect_equal(result@x, sp@x)
+})
+
+# --- error path tests ---
+
+test_that("write_fmm errors with list input", {
+  temp_path <- temp_path_fixture()
+  expect_error(write_fmm(list(1, 2, 3), temp_path("list.mtx")))
+})
+
+test_that("write_fmm errors with logical vector", {
+  temp_path <- temp_path_fixture()
+  expect_error(write_fmm(c(TRUE, FALSE), temp_path("logical.mtx")))
+})
+
+# --- roundtrip precision tests ---
+
+test_that("vec_to_fmm roundtrip preserves values", {
+  temp_path <- temp_path_fixture()
+  original <- c(0.0, -1.5, 1e-15, 1e15)
+  vec_to_fmm(original, temp_path("vec_roundtrip.mtx"))
+  result <- fmm_to_vec(temp_path("vec_roundtrip.mtx"))
+  expect_equal(result, original)
+})
+
+test_that("mat_to_fmm roundtrip preserves values", {
+  temp_path <- temp_path_fixture()
+  original <- matrix(c(0.0, -1.5, 1e-15, 1e15), nrow = 2)
+  mat_to_fmm(original, temp_path("mat_roundtrip.mtx"))
+  result <- fmm_to_mat(temp_path("mat_roundtrip.mtx"))
+  expect_equal(result, original)
+})
+
+test_that("write_fmm uses default filename argument", {
+  temp_path <- temp_path_fixture()
+  vec <- c(1, 2, 3)
+  outfile <- temp_path("explicit_name.mtx")
+  expect_true(write_fmm(vec, outfile))
+  expect_true(file.exists(outfile))
+})
+
+test_that("intvec_to_fmm roundtrip preserves integer values", {
+  temp_path <- temp_path_fixture()
+  original <- c(0L, -1L, 100L, 999L)
+  intvec_to_fmm(original, temp_path("intvec_roundtrip.mtx"))
+  result <- fmm_to_vec(temp_path("intvec_roundtrip.mtx"))
+  expect_equal(result, original)
+})
+
+test_that("intmat_to_fmm roundtrip preserves integer matrix values", {
+  temp_path <- temp_path_fixture()
+  original <- matrix(c(0L, -1L, 100L, 999L), nrow = 2)
+  intmat_to_fmm(original, temp_path("intmat_roundtrip.mtx"))
+  result <- fmm_to_mat(temp_path("intmat_roundtrip.mtx"))
+  expect_equal(result, original)
+})
+
 # --- gzip write tests ---
 
 test_that("write_fmm produces a valid .gz file", {

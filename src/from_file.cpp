@@ -1,4 +1,3 @@
-#include <chrono>
 #include <cstdint>
 #include <cstdlib>
 #include <cstring>
@@ -10,15 +9,14 @@
 #include "cpp11.hpp"
 #include "helpers.h"
 
-#include "../inst/include/fast_matrix_market/fast_matrix_market.hpp"
+#include "fast_matrix_market/fast_matrix_market.hpp"
 
 // TODO: Consider chunking
 
 namespace fmm = fast_matrix_market;
 
 [[cpp11::register]] //
-cpp11::doubles
-cpp_fmm_to_vec(const std::string &filename) {
+cpp11::doubles cpp_fmm_to_vec(const std::string &filename) {
   std::ifstream file_stream;
   std::vector<double> vec;
 
@@ -34,8 +32,7 @@ cpp_fmm_to_vec(const std::string &filename) {
 }
 
 [[cpp11::register]] //
-cpp11::doubles_matrix<>
-cpp_fmm_to_mat(const std::string &filename) {
+cpp11::doubles_matrix<> cpp_fmm_to_mat(const std::string &filename) {
   std::ifstream file_stream;
   fmm::matrix_market_header header;
   std::vector<double> vec;
@@ -61,8 +58,7 @@ cpp_fmm_to_mat(const std::string &filename) {
 }
 
 [[cpp11::register]] //
-cpp11::sexp
-cpp_fmm_to_sparse_Matrix(const std::string &filename) {
+cpp11::sexp cpp_fmm_to_sparse_Matrix(const std::string &filename) {
   // Check if the Matrix package is loaded
   if (!is_matrix_loaded()) {
     throw std::runtime_error(

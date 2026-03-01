@@ -102,6 +102,61 @@ fmm_to_sparse_Matrix <- function(filename) {
   return(result)
 }
 
+#' @export fmm_to_spam
+#' @rdname fmm_to_spam
+#' @name fmm_to_spam
+#' @title Convert Matrix Market File to spam Sparse Matrix
+#' @description This function reads a Matrix Market file and converts it to a
+#'   sparse matrix using the spam package.
+#' @param filename The name of the input Matrix Market file to be read.
+#' @return A spam object containing the data read from the Matrix Market file.
+#' @examplesIf requireNamespace("spam", quietly = TRUE)
+#' sample_sparse <- Matrix::Matrix(c(1, 0, 0, 2), nrow = 2, sparse = TRUE)
+#' tmp <- tempfile(fileext = ".mtx")
+#' write_fmm(sample_sparse, tmp)
+#' sp <- fmm_to_spam(tmp)
+fmm_to_spam <- function(filename) {
+  if (!requireNamespace("spam", quietly = TRUE)) {
+    stop("Package 'spam' is required for this function.")
+  }
+  dgc <- fmm_to_sparse_Matrix(filename)
+  tri <- Matrix::summary(dgc)
+  spam::spam(
+    list(i = tri$i, j = tri$j, values = tri$x),
+    nrow = nrow(dgc), ncol = ncol(dgc)
+  )
+}
+
+#' @export spam_to_fmm
+#' @rdname spam_to_fmm
+#' @name spam_to_fmm
+#' @title Convert a spam Sparse Matrix to Matrix Market Format
+#' @description This function takes a spam sparse matrix and converts it into a
+#'   Matrix Market file.
+#' @param input A spam sparse matrix to be converted.
+#' @param filename The name of the output file where the Matrix Market formatted
+#'   data will be saved.
+#' @return A boolean indicating success or failure. Writes a MTX file to disk.
+#' @examplesIf requireNamespace("spam", quietly = TRUE)
+#' sp <- spam::spam(c(1, 0, 0, 2), nrow = 2)
+#' spam_to_fmm(sp, tempfile(fileext = ".mtx"))
+spam_to_fmm <- function(input, filename) {
+  if (!requireNamespace("spam", quietly = TRUE)) {
+    stop("Package 'spam' is required for this function.")
+  }
+  if (!requireNamespace("Matrix", quietly = TRUE)) {
+    stop("Package 'Matrix' is required for this function.")
+  }
+  trip <- spam::triplet(input)
+  dgc <- Matrix::sparseMatrix(
+    i = trip$indices[, 1],
+    j = trip$indices[, 2],
+    x = trip$values,
+    dims = input@dimension
+  )
+  sparse_Matrix_to_fmm(dgc, filename)
+}
+
 #' @export vec_to_fmm
 #' @rdname vec_to_fmm
 #' @name vec_to_fmm
@@ -227,6 +282,8 @@ write_fmm <- function(input, filename = "out.mtx") {
     }
   } else if (inherits(input, "sparseMatrix")) {
     ret <- sparse_Matrix_to_fmm(input, actual_fname) # nolint. C++ function.
+  } else if (inherits(input, "spam")) {
+    ret <- spam_to_fmm(input, actual_fname)
   } else {
     stop(
       paste(

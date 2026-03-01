@@ -191,6 +191,5 @@ both [blue](https://hotpot.ai/s/art-generator/8-TNiwRilbBFnQHwK), and
 [green](https://hotpot.ai/s/art-generator/8-E2dBngG5nRiwCeL), as a riff
 on the [NIST Matrix Market logo](https://math.nist.gov/MatrixMarket/).
 The text was added in a presentation software (WPS Presentation).
-Hexagonal cropping was accomplished in a [hexb](http://hexb.in/)
-compatible design [using
+Hexagonal cropping was accomplished in a hexb compatible design [using
 hexsticker](https://github.com/fridex/hexsticker).

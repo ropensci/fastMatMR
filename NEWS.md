@@ -1,6 +1,6 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
-# fastMatMR 1.2.6 (2026-03-01)
+# fastMatMR 1.2.7 (2026-03-01)
 
 ## Features
 
